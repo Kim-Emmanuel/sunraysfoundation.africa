@@ -61,7 +61,7 @@ export const metadata: Metadata = {
   title: "Sun Rays Foundation | Empowering Communities",
   description: "Sun Rays Foundation aims to bring sustainable development and provide educational resources to underprivileged communities in South Sudan.",
   keywords: "Sun Rays Foundation, nonprofit, charity, South Sudan, education, sustainable development",
-  author: "Sun Rays Foundation",
+  authors: "Sun Rays Foundation",
   // Open Graph / Facebook
   openGraph: {
     title: "Sun Rays Foundation",
