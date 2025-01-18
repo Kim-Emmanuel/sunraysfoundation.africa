@@ -39,7 +39,7 @@
 
       .cls-7 {
         stroke: #e08d3b;
-        stroke-width: .02px;
+        stroke-width: .2px;
       }
     </style>
   </defs>

@@ -46,6 +46,10 @@
     @apply w-full bg-white min-h-[530px] flex justify-center items-center flex-col gap-[20px] py-10 px-6;
   }
 
+  .green_container {
+    @apply w-full bg-primary h-[110px] flex justify-center items-center flex-col gap-[20px] py-10 px-6;
+  }
+
   .tag {
     @apply bg-secondary px-6 py-3 font-work-sans font-bold rounded-sm uppercase relative tag-tri;
   }
@@ -106,6 +110,11 @@
     @apply block w-full text-left px-4 py-2 hover:bg-gray-100;
   } */
 
+  /* Footer Links */
+  .footer-links {
+    @apply text-gray-800 transition-colors duration-300 ease-in-out hover:text-blue-600;
+  }
+
   /* Responsive Styling */
   @media (max-width: 768px) {
     .nav-bar {
@@ -153,23 +162,33 @@
   }
 }
 
+/* Responsiveness */
 @screen md {
   .container {
     @apply max-w-screen-md;
   }
 }
 
+/* Updated to include new classes */
 @screen lg {
   .container {
     @apply max-w-screen-lg;
   }
 }
 
+/* Additional classes for maintaining responsiveness */
 @screen xl {
   .container {
     @apply max-w-screen-xl;
   }
 }
+
+@screen 2xl {
+  .container {
+    @apply max-w-screen-2xl;
+  }
+}
+
 
 @layer base {
   :root {
