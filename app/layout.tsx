@@ -83,7 +83,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Sun Rays Foundation",
     description: "Sun Rays Foundation aims to bring sustainable development and provide educational resources to underprivileged communities in South Sudan.",
-    images: "/path/to/image.jpg",
+    // images: "/logo.svg",
     site: "@sunraysfoundation",
   },
 };

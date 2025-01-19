@@ -62,6 +62,10 @@
     @apply text-20-medium max-w-2xl text-center break-words;
   }
 
+  .heading-partner {
+    @apply px-6 py-3 mb-8 bg-gradient-to-r from-black to-primary text-transparent bg-clip-text font-work-sans font-medium container sm:text-[54px] sm:leading-[64px] text-[36px] leading-[46px] max-w-5xl text-center my-5;
+  }
+
   .section_container {
     @apply px-6 py-10 max-w-7xl mx-auto;
   }
