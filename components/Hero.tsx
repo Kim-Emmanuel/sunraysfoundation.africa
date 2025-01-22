@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { useRouter } from 'next/navigation'
 
 const images = [
   {
@@ -28,6 +29,7 @@ const sliderDuration = 5000; // 5 seconds
 
 const Hero: FC = () => {
   const [currentImage, setCurrentImage] = useState(0);
+  const router = useRouter();
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -43,6 +45,10 @@ const Hero: FC = () => {
 
   const prevSlide = () => {
     setCurrentImage((prev) => (prev - 1 + images.length) % images.length);
+  };
+
+  const handleAboutUsClick = () => {
+    router.push("/about-us");
   };
 
   return (
@@ -70,9 +76,6 @@ const Hero: FC = () => {
                 <Image
                   src={image.src}
                   alt={image.alt}
-                  // layout="fill"
-                  // objectFit="cover"
-                  // quality={100}
                   width={1200}
                   height={1200}
                   className='w-full h-full object-cover'
@@ -90,7 +93,10 @@ const Hero: FC = () => {
                   <h1 className="text-4xl md:text-6xl lg:text-8xl font-bold text-shadow-custom">
                     {image.title}
                   </h1>
-                  <Button className="mt-5 py-5 px-6 transition-transform transform hover:scale-105">
+                  <Button
+                    className="mt-5 py-5 px-6 transition-transform transform hover:scale-105"
+                    onClick={handleAboutUsClick}
+                  >
                     About Us
                   </Button>
                 </motion.div>

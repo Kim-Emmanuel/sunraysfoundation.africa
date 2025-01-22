@@ -4,10 +4,18 @@ import { FC } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { Button } from "@/components/ui/button";
+import { useRouter } from 'next/navigation'
 
 const YOUTUBE_URL = process.env.NEXT_PUBLIC_YOUTUBE_URL || '';
 
+
 const Welcome: FC = () => {
+  const router = useRouter();
+
+  const handleAboutUsClick = () => {
+    router.push("/about-us");
+  };
+
   return (
     <section className="white_container">
       <motion.h1
@@ -34,7 +42,7 @@ const Welcome: FC = () => {
               solutions that strengthen resilience and empower the most marginalized in East Africa.
               Join us to build a brighter tomorrow for all.
             </p>
-            <Button className="mt-5 text-black py-5 px-6 transition-transform transform hover:scale-105">
+            <Button onClick={handleAboutUsClick} className="mt-5 text-black py-5 px-6 transition-transform transform hover:scale-105">
               Read More
             </Button>
           </motion.div>
