@@ -56,7 +56,6 @@ const workSans = localFont({
   variable: "--font-work-sans",
 });
 
-
 export const metadata: Metadata = {
   title: "Sun Rays Foundation | Empowering Communities",
   description: "Sun Rays Foundation aims to bring sustainable development and provide educational resources to underprivileged communities in South Sudan.",

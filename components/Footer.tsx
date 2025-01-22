@@ -164,7 +164,7 @@ const Footer: FC = () => {
             <h1 className="font-semibold text-lg">Quick Links</h1>
             <div className="mt-4 md:mt-8 flex flex-col gap-2 xs:gap-4 font-normal text-sm md:text-base text-black">
               <div className='relative'>
-                <Link href="/about" className="footer-links custom-link">
+                <Link href="/about-us" className="footer-links custom-link">
                   About Us
                 </Link>
               </div>

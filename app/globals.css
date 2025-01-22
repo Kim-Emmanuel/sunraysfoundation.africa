@@ -10,6 +10,10 @@
     @apply flex justify-between items-center;
   } */
 
+  .text-46-normal {
+    @apply font-normal md:leading-[38px] lg:leading-[52px] leading-[30px] text-[20px] sm:text-[26px] md:text-[35px] lg:text-[46px] text-black;
+  }
+
   .text-30-extrabold {
     @apply text-[30px] font-extrabold text-white;
   }
