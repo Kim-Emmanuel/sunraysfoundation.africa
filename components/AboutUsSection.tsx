@@ -75,8 +75,8 @@ const AboutUsSection: React.FC = () => {
         className="flex flex-col items-center mt-2 md:mt-16 mb-10 sm:px-8 md:px-16 lg:px-24"
       >
         <h1 className='text-46-normal text-center mb-4'>Compassionate with Hope.</h1>
-        <p className="text-16-normal text-center mt-4">We are driven by love and purpose to help vulnerable communities through sustainable, community based solutions that strengthens resilience and empower the most marginalized in East Africa.</p>
-        <p className="text-16-normal text-center mt-4">We believe that everyone deserves access to clean water, healthcare, and education. We are committed to making a difference in the lives of the people.</p>
+        <p className="customParagraph text-center mt-4">We are driven by love and purpose to help vulnerable communities through sustainable, community based solutions that strengthens resilience and empower the most marginalized in East Africa.</p>
+        <p className="customParagraph text-center mt-4">We believe that everyone deserves access to clean water, healthcare, and education. We are committed to making a difference in the lives of the people.</p>
       </motion.div>
     </motion.div>
   );

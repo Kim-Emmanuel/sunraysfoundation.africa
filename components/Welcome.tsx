@@ -36,7 +36,7 @@ const Welcome: FC = () => {
             <h2 className="sub-heading !max-w-3xl !text-start mb-4">
               Welcome to Sun Rays Foundation!
             </h2>
-            <p className="text-sm xs:text-base font-normal break-words sm:text-base md:text-base lg:text-base 2xl:text-xl mb-4">
+            <p className="customParagraph mb-4">
               Founded by a group of South Sudanese youth, Sun Rays Foundation is a humanitarian non-profit organization.
               We are driven by love and purpose to help vulnerable communities through sustainable, community-based
               solutions that strengthen resilience and empower the most marginalized in East Africa.

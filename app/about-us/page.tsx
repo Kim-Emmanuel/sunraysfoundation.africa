@@ -1,4 +1,5 @@
 import AboutUsSection from '@/components/AboutUsSection';
+import MissionAndVision from '@/components/MissionAndVision';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -35,5 +36,7 @@ export const metadata: Metadata = {
 export default function Page() {
 return <main>
   <AboutUsSection />
+  <MissionAndVision />
+  
 </main>;
 }
