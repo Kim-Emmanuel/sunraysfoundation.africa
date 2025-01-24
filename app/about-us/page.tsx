@@ -37,6 +37,5 @@ export default function Page() {
 return <main>
   <AboutUsSection />
   <MissionAndVision />
-  
 </main>;
 }

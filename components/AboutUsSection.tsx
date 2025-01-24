@@ -49,8 +49,7 @@ const AboutUsSection: React.FC = () => {
       transition={{ duration: 1 }}
     >
       <div className='sm:px-8 md:px-16 lg:px-24'>
-        <h2 className="text-[#E58824] font-medium text-sm
-         uppercase mt-20">{content.title}</h2>
+        <h2 className="text-[#E58824] font-medium text-sm uppercase mt-20">{content.title}</h2>
         <h1 className="text-46-normal text-center mt-4">{content.subtitle}</h1>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:grid-cols-3 lg:grid-cols-3 mt-12 md:gap-6 lg:gap-8">

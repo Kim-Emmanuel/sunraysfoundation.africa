@@ -6,7 +6,7 @@ import Image from 'next/image';
 
 const MissionAndVision: FC = () => {
   return (
-    <div className="relative bg-white text-black py-12">
+    <div className="relative bg-white border-t-[1px] border-b-[1px] border-gray-200 text-black py-12">
       <motion.div
         className="absolute inset-0 z-0"
         initial={{ opacity: 0 }}

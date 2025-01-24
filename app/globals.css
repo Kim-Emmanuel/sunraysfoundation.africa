@@ -83,11 +83,11 @@
   }
 
   .menu-icon {
-    @apply cursor-pointer flex flex-col items-center gap-[15px] absolute top-[18px] right-[20px] z-[101];
+    @apply cursor-pointer flex flex-col items-center gap-[15px] absolute top-[58px] right-[20px] z-[101];
   }
 
   .mobile-screen {
-    @apply fixed inset-0 z-50 flex flex-col items-center justify-center p-[10px] rounded-[19px] bg-white backdrop-blur-[5px];
+    @apply fixed inset-0 z-50 flex flex-col items-center justify-center p-[10px] bg-white backdrop-blur-[5px];
   }
 
   .nav-bar {

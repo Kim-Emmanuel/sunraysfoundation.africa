@@ -70,18 +70,26 @@ const Footer: FC = () => {
           <div className="flex flex-col sm:flex-row gap-2">
             <h1 className='text-16-medium'>Follow us:</h1>
             <div className='flex items-start justify-start gap-2'>
-              <div className="hover:scale-110 hover:bg-[#93c74099] rounded-full p-1 transition-all duration-200">
-                <Image src="/facebook.svg" alt="Facebook Logo" width={20} height={20} />
-              </div>
-              <div className="hover:scale-110 hover:bg-[#93c74099] rounded-full p-1 transition-all duration-200">
-                <Image src="/linkedin.svg" alt="LinkedIn Logo" width={20} height={20} />
-              </div>
-              <div className="hover:scale-110 hover:bg-[#93c74099] rounded-full p-1 transition-all duration-200">
-                <Image src="/youtube.svg" alt="YouTube Logo" width={20} height={20} />
-              </div>
-              <div className="hover:scale-110 hover:bg-[#93c74099] rounded-full p-1 transition-all duration-200">
-                <Image src="/x.svg" alt="TwitterX Logo" width={20} height={20} />
-              </div>
+              <Link href="https://www.facebook.com/profile.php?id=61553897036925" className="text-white">
+                <div className="hover:scale-110 hover:bg-[#93c74099] rounded-full p-1 transition-all duration-200">
+                  <Image src="/facebook.svg" alt="Facebook Logo" width={20} height={20} />
+                </div>
+              </Link>
+              <Link href="https://www.instagram.com/sunra_ysfoundation19/" className="text-white">
+                <div className="hover:scale-110 hover:bg-[#93c74099] rounded-full p-1 transition-all duration-200">
+                  <Image src="/instagram.svg" alt="Instagram Logo" width={20} height={20} />
+                </div>
+              </Link>
+              <Link href="#" className="text-white">
+                <div className="hover:scale-110 hover:bg-[#93c74099] rounded-full p-1 transition-all duration-200">
+                  <Image src="/linkedin.svg" alt="LinkedIn Logo" width={20} height={20} />
+                </div>
+              </Link>
+              <Link href="https://www.youtube.com/@SunRaysFoundation" className="text-white">
+                <div className="hover:scale-110 hover:bg-[#93c74099] rounded-full p-1 transition-all duration-200">
+                  <Image src="/youtube.svg" alt="YouTube Logo" width={20} height={20} />
+                </div>
+              </Link>
             </div>
           </div>
         </div>

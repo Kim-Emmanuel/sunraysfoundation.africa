@@ -4,6 +4,7 @@ import Hero from "@/components/Hero";
 import Welcome from "@/components/Welcome";
 import Image from 'next/image';
 import Partners from '@/components/Partners';
+import MissionAndVision from '@/components/MissionAndVision';
 // import Features from "@/components/Features";
 
 const Home: FC = () => {
@@ -11,17 +12,15 @@ const Home: FC = () => {
     <>
       <Hero />
       {/* About Section Container */}
-      <section className="white_container">
-        {/* <h1 className="heading">
-          Who we are
-        </h1>
-
-        <p className="sub-heading !max-w-3xl">
-          Founded by a group of South Sudanese youth, Sun Rays Foundation is a humanitarian non-profit organization.
-        </p> */}
+      <section className="">
         <Welcome />
       </section>
+      
+      {/* <Features /> */}
 
+      {/* Mission and Vision Section */}
+      <MissionAndVision />
+      
       <section className="section_container mb-12">
         <div className='flex justify-center flex-col items-center'>
           <p className="sub-heading !text-gray-600">
