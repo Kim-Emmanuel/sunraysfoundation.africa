@@ -2,7 +2,7 @@
 
 import { FC } from 'react';
 import { motion } from 'framer-motion';
-import Image from 'next/image';
+// import Image from 'next/image';
 
 const MissionAndVision: FC = () => {
   return (
@@ -15,7 +15,7 @@ const MissionAndVision: FC = () => {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
       >
-        <div className="flex flex-row justify-center items-center h-full">
+        {/* <div className="flex flex-row justify-center items-center h-full">
           <Image
             src="/images/partner-logos/large-arrow-light.png"
             alt="large-arrow-light"
@@ -32,7 +32,7 @@ const MissionAndVision: FC = () => {
             priority
             className="object-cover"
           />
-        </div>
+        </div> */}
       </motion.div>
       <div className="relative container mx-auto text-center z-10">
         <h2 className="text-46-normal !font-medium mb-8">Our Vision & Mission</h2>

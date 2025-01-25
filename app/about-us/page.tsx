@@ -1,4 +1,5 @@
 import AboutUsSection from '@/components/AboutUsSection';
+import Banner from '@/components/Banner';
 import MissionAndVision from '@/components/MissionAndVision';
 import type { Metadata } from 'next';
 
@@ -35,6 +36,7 @@ export const metadata: Metadata = {
 
 export default function Page() {
 return <main>
+  <Banner staticTitle="About Us" />
   <AboutUsSection />
   <MissionAndVision />
 </main>;

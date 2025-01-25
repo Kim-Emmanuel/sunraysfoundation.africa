@@ -39,16 +39,16 @@ export default function Page() {
   return <main>
     <Banner staticTitle="Contact Us" />
 
-    <section className="section_container mt-2">
-      <h2 className="text-46-normal font-bold mb-4 text-center">Contact Information</h2>
+    <section className="section_container bg-[#e5ead3]">
+      <h2 className="text-46-normal font-bold mb-6 mt-2 text-center">Contact Information</h2>
       <p className="customParagraph mb-10 text-center">For inquiries, support, or partnership opportunities, please get in touch with us using the contact information below.</p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
           <h3 className="text-lg font-bold">Sun Rays Foundation</h3>
           <p className="customParagraph">
-            Juba - South Sudan <br />
-            Thongping, Scenius Hub Next to Winners Chapel.
+            Nairobi - Kenya <br />
+            Shalom House, St.Daniel Comboni Road Off Ngong Road.
           </p>
           <p className="customParagraph mb-4">Email: <Link href="mailto:info@sunraysfoundation.org" className="footer-links">Email Us</Link></p>
         </div>

@@ -5,6 +5,7 @@ import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import Link from 'next/link';
 import { Button } from './ui/button';
+import Image from 'next/image';
 // import emailjs from 'emailjs-com';
 
 interface OfficeInfo {
@@ -90,33 +91,40 @@ const ContactSection: FC = () => {
   }
 
   return (
-    <section className="section_container bg-gray-100" ref={ref}>
-      <div className="mx-auto">
-        <motion.div
-          className="w-full h-96 mb-12"
-          initial="hidden"
-          animate={controls}
-          variants={{
-            hidden: { opacity: 0, y: 20 },
-            visible: { opacity: 1, y: 0, transition: { duration: 1 } },
-          }}
-        >
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.7905831745843!2d36.751709073959624!3d-1.3005031986871387!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f1a46a8d61f75%3A0xd55717310205d288!2sShalom%20House!5e0!3m2!1sen!2ske!4v1730897024747!5m2!1sen!2ske"
-            className="w-full h-full border-0"
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            title="Shalom House map"
-            aria-label="Shalom House map"
-            allowFullScreen
-          ></iframe>
-        </motion.div>
+    <main>
+      <section className="section_container bg-gray-100" ref={ref}>
+        <div className="mx-auto">
+          <motion.div
+            className="w-full h-96 mb-12"
+            initial="hidden"
+            animate={controls}
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: { opacity: 1, y: 0, transition: { duration: 1 } },
+            }}
+          >
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.7905831745843!2d36.751709073959624!3d-1.3005031986871387!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f1a46a8d61f75%3A0xd55717310205d288!2sShalom%20House!5e0!3m2!1sen!2ske!4v1730897024747!5m2!1sen!2ske"
+              className="w-full h-full border-0"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Shalom House map"
+              aria-label="Shalom House map"
+              allowFullScreen
+            ></iframe>
+          </motion.div>
+        </div>
+      </section>
 
+      <section className="section_container bg-white" ref={ref}>
+        <h2 className="sub-heading !text-start mb-6">
+          Connect With Us Through Our Offices
+        </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {offices.map((office, index) => (
             <motion.div
               key={index}
-              className="bg-white p-8 rounded shadow-md"
+              className="bg-white border border-[#94c841cc] p-8 rounded-lg shadow-md"
               initial="hidden"
               animate={controls}
               variants={{
@@ -124,13 +132,19 @@ const ContactSection: FC = () => {
                 visible: { opacity: 1, y: 0, transition: { duration: 1 } },
               }}
             >
-              <i className="lnr lnr-home text-2xl text-primary mb-4"></i>
-              <h6 className="text-xl font-bold mb-2">{office.title}</h6>
-              <p className="mb-4">{office.address}</p>
+              <Image
+                className="hover:scale-110 hover:bg-[#93c74099] rounded-full p-1 transition-all duration-200"
+                src="/home.svg"
+                alt="home"
+                width={30}
+                height={30}
+              />
+              <h1 className="text-xl font-bold mb-2">{office.title}</h1>
+              <p className="customParagraph mb-4">{office.address}</p>
               <p>
-                <Link href={`tel:${office.phone}`} className="text-blue-600">{office.phone}</Link>
+                <Link href={`tel:${office.phone}`} className="customParagraph text-blue-600">{office.phone}</Link>
               </p>
-              <p className="text-gray-600">Mon to Fri 9am to 6pm</p>
+              <p className="customParagraph text-gray-600">Mon to Fri 9am to 6pm</p>
             </motion.div>
           ))}
         </div>
@@ -144,11 +158,11 @@ const ContactSection: FC = () => {
             className="grid grid-cols-1 md:grid-cols-2 gap-8"
           >
             <motion.h2
-              className="col-span-1 md:col-span-2 text-2xl md:text-3xl lg:text-4xl font-bold mb-8"
+              className="col-span-1 md:col-span-2 text-2xl text-center md:text-3xl lg:text-4xl font-medium mb-6"
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 50 }}
               transition={{ duration: 1, ease: "easeOut" }}
-            >Get In Touch.</motion.h2>
+            >Contact Us.</motion.h2>
             <motion.div variants={listVariant} className="form-group">
               <input type="text" id="first_name" name="first_name" placeholder="Your full name*" required className="w-full p-4 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" />
             </motion.div>
@@ -170,8 +184,9 @@ const ContactSection: FC = () => {
             </div>
           </motion.form>
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
+
   );
 };
 
