@@ -79,7 +79,7 @@
   }
 
   .bar {
-    @apply w-[50px] h-[2.5px] bg-primary rounded;
+    @apply w-[50px] h-[2.5px] bg-black rounded;
   }
 
   .menu-icon {
@@ -87,7 +87,7 @@
   }
 
   .mobile-screen {
-    @apply fixed inset-0 z-50 flex flex-col items-center justify-center p-[10px] bg-white backdrop-blur-[5px];
+    @apply fixed inset-0 z-50 flex flex-col items-start justify-start top-[90px] px-4 py-6 bg-white backdrop-blur-[5px] transition-transform duration-300;
   }
 
   .nav-bar {
@@ -107,7 +107,7 @@
   }
 
   .nav-bar a {
-    @apply text-gray-800 font-medium transition-colors duration-300 ease-in-out hover:text-blue-600;
+    @apply text-gray-800 font-medium transition-colors duration-300 ease-in-out hover:text-[#93C740];
   }
 
   .nav-bar ul li:hover ul {
@@ -124,7 +124,7 @@
 
   /* Footer Links */
   .footer-links {
-    @apply text-gray-800 transition-colors duration-300 ease-in-out hover:text-blue-600;
+    @apply text-gray-800 transition-colors duration-300 ease-in-out hover:text-[#93C740];
   }
 
   /* Responsive Styling */
@@ -157,6 +157,10 @@
 
   .custom-link:hover::after {
     @apply transform scale-x-100 origin-left;
+  }
+
+  .active-link {
+    @apply !text-primary relative inline-block;
   }
 }
 

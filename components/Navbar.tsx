@@ -1,27 +1,36 @@
-"use client"
+"use client";
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import Image from 'next/image';
+import clsx from 'clsx';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from "@/components/ui/dropdown-menu";
 import { motion } from 'framer-motion';
 
 const Navbar: React.FC = () => {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const pathname = usePathname();
 
   const handleDropdown = (dropdown: string) => {
     setOpenDropdown(openDropdown === dropdown ? null : dropdown);
   };
 
+  const closeDropdown = () => {
+    setOpenDropdown(null);
+  };
+
+  const isActiveLink = (link: string) => pathname === link;
+
   return (
     <header>
-      {/* Header  content */}
+      {/* Header content */}
       <div className="bg-primary py-2 px-2" style={{ lineHeight: '1.3' }}>
         <div className="container mx-auto">
           <div className="flex items-center">
@@ -93,7 +102,6 @@ const Navbar: React.FC = () => {
                   height={100}
                   className="object-cover"
                   priority // Ensures the logo loads quickly
-                // quality={100} // Ensure high-quality rendering
                 />
               </Link>
             </div>
@@ -102,7 +110,7 @@ const Navbar: React.FC = () => {
               onClick={() => handleDropdown('mobileMenu')}
             >
               <div
-                className={`menu-icon ${openDropdown === 'mobileMenu' ? "open" : ""}`}
+                className={clsx("menu-icon", { "open": openDropdown === 'mobileMenu' })}
               >
                 <motion.div
                   className='bar'
@@ -118,31 +126,23 @@ const Navbar: React.FC = () => {
             </button>
           </div>
 
-          <div className={`w-full md:flex md:items-center md:w-auto ${openDropdown === 'mobileMenu' ? 'mobile-screen' : 'hidden'}`}
-          // className={`w-full md:flex md:items-center md:w-auto mobile-screen`}
-          // initial="hidden"
-          // animate={openDropdown === 'mobileMenu' ? 'visible' : 'hidden'}
-          // variants={{
-          //   visible: { opacity: 1, height: "auto" },
-          //   hidden: { opacity: 0, height: 0 }
-          // }}
-          // transition={{ duration: 0.3 }}
+          <div className={clsx("w-full md:flex md:items-center md:w-auto", { "mobile-screen": openDropdown === 'mobileMenu', "hidden": openDropdown !== 'mobileMenu' })}
           >
             <ul className="md:flex md:space-x-4 mt-4 md:mt-0">
               <li className="relative">
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
-                    <Link href="/who-we-are" className="custom-link">
+                    <Link href="/who-we-are" className={clsx('custom-link', { 'active-link': isActiveLink('/who-we-are') || isActiveLink('/about-us') || isActiveLink('/our-history') })}>
                       Who we are
-                    </Link >
+                    </Link>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent>
                     <DropdownMenuItem asChild>
-                      <Link href="/about-us">About Us</Link>
+                      <Link href="/about-us" className={clsx('hover:!text-primary cursor-pointer', { 'active-link': isActiveLink('/about-us') })} onClick={closeDropdown}>About Us</Link>
                     </DropdownMenuItem>
                     <DropdownMenuSeparator />
                     <DropdownMenuItem asChild>
-                      <Link href="/our-history">Our History</Link>
+                      <Link href="/our-history" className={clsx('hover:!text-primary cursor-pointer', { 'active-link': isActiveLink('/our-history') })} onClick={closeDropdown}>Our History</Link>
                     </DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
@@ -150,37 +150,37 @@ const Navbar: React.FC = () => {
               <li className="relative">
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
-                    <Link href="/our-programs" className="custom-link">
+                    <Link href="/our-programs" className={clsx('custom-link', { 'active-link': isActiveLink('/our-programs') || isActiveLink('/education-and-scholarships') || isActiveLink('/economic-empowerment') || isActiveLink('/protection-and-advocacy') || isActiveLink('/peacebuilding-and-reconciliation') || isActiveLink('/agriculture-and-food-sovereignty') || isActiveLink('/basic-health-and-well-being') || isActiveLink('/cultural-awareness-and-education') })}>
                       Our Programs
-                    </Link >
+                    </Link>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent>
                     <DropdownMenuItem asChild>
-                      <Link href="/education-and-scholarships">Education & Scholarships</Link>
+                      <Link href="/education-and-scholarships" className={clsx('hover:!text-primary cursor-pointer', { 'active-link': isActiveLink('/education-and-scholarships') })} onClick={closeDropdown}>Education & Scholarships</Link>
                     </DropdownMenuItem>
                     <DropdownMenuSeparator />
                     <DropdownMenuItem asChild>
-                      <Link href="/economic-empowerment">Economic Empowerment</Link>
+                      <Link href="/economic-empowerment" className={clsx('hover:!text-primary cursor-pointer', { 'active-link': isActiveLink('/economic-empowerment') })} onClick={closeDropdown}>Economic Empowerment</Link>
                     </DropdownMenuItem>
                     <DropdownMenuSeparator />
                     <DropdownMenuItem asChild>
-                      <Link href="/protection-and-advocacy">Protection & Advocacy</Link>
+                      <Link href="/protection-and-advocacy" className={clsx('hover:!text-primary cursor-pointer', { 'active-link': isActiveLink('/protection-and-advocacy') })} onClick={closeDropdown}>Protection & Advocacy</Link>
                     </DropdownMenuItem>
                     <DropdownMenuSeparator />
                     <DropdownMenuItem asChild>
-                      <Link href="/peacebuilding-and-reconciliation">Peacebuilding & Reconciliation</Link>
+                      <Link href="/peacebuilding-and-reconciliation" className={clsx('hover:!text-primary cursor-pointer', { 'active-link': isActiveLink('/peacebuilding-and-reconciliation') })} onClick={closeDropdown}>Peacebuilding & Reconciliation</Link>
                     </DropdownMenuItem>
                     <DropdownMenuSeparator />
                     <DropdownMenuItem asChild>
-                      <Link href="/agriculture-and-food-sovereignty">Agriculture & Food sovereignty</Link>
+                      <Link href="/agriculture-and-food-sovereignty" className={clsx('hover:!text-primary cursor-pointer', { 'active-link': isActiveLink('/agriculture-and-food-sovereignty') })} onClick={closeDropdown}>Agriculture & Food sovereignty</Link>
                     </DropdownMenuItem>
                     <DropdownMenuSeparator />
                     <DropdownMenuItem asChild>
-                      <Link href="/basic-health-and-well-being">Basic Health & Well-being</Link>
+                      <Link href="/basic-health-and-well-being" className={clsx('hover:!text-primary cursor-pointer', { 'active-link': isActiveLink('/basic-health-and-well-being') })} onClick={closeDropdown}>Basic Health & Well-being</Link>
                     </DropdownMenuItem>
                     <DropdownMenuSeparator />
                     <DropdownMenuItem asChild>
-                      <Link href="/cultural-awareness-and-education">Cultural Awareness & Education</Link>
+                      <Link href="/cultural-awareness-and-education" className={clsx('hover:!text-primary cursor-pointer', { 'active-link': isActiveLink('/cultural-awareness-and-education') })} onClick={closeDropdown}>Cultural Awareness & Education</Link>
                     </DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
@@ -188,17 +188,17 @@ const Navbar: React.FC = () => {
               <li className="relative">
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
-                    <Link href="/impact" className="custom-link">
+                    <Link href="/impact" className={clsx('custom-link', { 'active-link': isActiveLink('/impact') || isActiveLink('/success-stories') || isActiveLink('/gallery') })}>
                       Impacts
                     </Link >
                   </DropdownMenuTrigger>
                   <DropdownMenuContent>
                     <DropdownMenuItem asChild>
-                      <Link href="/success-stories">Success Stories</Link>
+                      <Link href="/success-stories" className={clsx('hover:!text-primary cursor-pointer', { 'active-link': isActiveLink('/success-stories') })} onClick={closeDropdown}>Success Stories</Link>
                     </DropdownMenuItem>
                     <DropdownMenuSeparator />
                     <DropdownMenuItem asChild>
-                      <Link href="/gallery">Gallery</Link>
+                      <Link href="/gallery" className={clsx('hover:!text-primary cursor-pointer', { 'active-link': isActiveLink('/gallery') })} onClick={closeDropdown}>Gallery</Link>
                     </DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
@@ -206,30 +206,30 @@ const Navbar: React.FC = () => {
               <li className="relative">
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
-                    <Link href="/Where-we-are" className="custom-link">
+                    <Link href="/Where-we-are" className={clsx('custom-link', { 'active-link': isActiveLink('/where-we-are') || isActiveLink('/south-sudan') || isActiveLink('/kenya') || isActiveLink('/uganda') || isActiveLink('/lesotho') })}>
                       Where we are
                     </Link >
                   </DropdownMenuTrigger>
                   <DropdownMenuContent>
                     <DropdownMenuItem asChild>
-                      <Link href="/south-sudan">South Sudan</Link>
+                      <Link href="/south-sudan" className={clsx('hover:!text-primary cursor-pointer', { 'active-link': isActiveLink('/south-sudan') })} onClick={closeDropdown}>South Sudan</Link>
                     </DropdownMenuItem>
                     <DropdownMenuSeparator />
                     <DropdownMenuItem asChild>
-                      <Link href="/kenya">Kenya</Link>
+                      <Link href="/kenya" className={clsx('hover:!text-primary cursor-pointer', { 'active-link': isActiveLink('/kenya') })} onClick={closeDropdown}>Kenya</Link>
                     </DropdownMenuItem>
                     <DropdownMenuSeparator />
                     <DropdownMenuItem asChild>
-                      <Link href="/uganda">Uganda</Link>
+                      <Link href="/uganda" className={clsx('hover:!text-primary cursor-pointer', { 'active-link': isActiveLink('/uganda') })} onClick={closeDropdown}>Uganda</Link>
                     </DropdownMenuItem>
                     <DropdownMenuSeparator />
                     <DropdownMenuItem asChild>
-                      <Link href="/lesotho">Lesotho</Link>
+                      <Link href="/lesotho" className={clsx('hover:!text-primary cursor-pointer', { 'active-link': isActiveLink('/lesotho') })} onClick={closeDropdown}>Lesotho</Link>
                     </DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
               </li>
-              <li><Link className="custom-link" href="/contact">Contact</Link></li>
+              <li><Link href="/contact" className={clsx('custom-link', { 'active-link': isActiveLink('/contact') })}>Contact</Link></li>
             </ul>
           </div>
         </div>
@@ -239,5 +239,3 @@ const Navbar: React.FC = () => {
 };
 
 export default Navbar;
-
-
