@@ -22,7 +22,10 @@ const Navbar: React.FC = () => {
 	const pathname = usePathname();
 
 	const handleDropdown = (dropdown: string) => {
-		setOpenDropdown(openDropdown === dropdown ? null : dropdown);
+		if (window.innerWidth < 768) {
+			// Adjust breakpoint as needed
+			setOpenDropdown(openDropdown === dropdown ? null : dropdown);
+		}
 	};
 
 	const closeDropdown = () => {
@@ -46,11 +49,19 @@ const Navbar: React.FC = () => {
 			}
 		};
 
+		const handleResize = () => {
+			if (window.innerWidth >= 768) {
+				closeDropdown();
+			}
+		};
+
 		if (typeof window !== "undefined") {
 			window.addEventListener("scroll", controlNavbar);
+			window.addEventListener("resize", handleResize);
 
 			return () => {
 				window.removeEventListener("scroll", controlNavbar);
+				window.removeEventListener("resize", handleResize);
 			};
 		}
 	}, [lastScrollY]);
