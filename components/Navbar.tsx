@@ -45,7 +45,7 @@ const Navbar: React.FC = () => {
 					setIsVisible(true);
 				}
 				setLastScrollY(window.scrollY);
-				setShowHeaderContent(window.scrollY < 50);
+				setShowHeaderContent(window.scrollY < 10);
 			}
 		};
 
