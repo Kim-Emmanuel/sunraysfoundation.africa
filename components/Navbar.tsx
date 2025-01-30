@@ -160,10 +160,10 @@ const Navbar: React.FC = () => {
 			)}
 
 			<motion.nav
+				className='nav-bar'
 				initial={{ y: 0 }}
 				animate={{ y: isVisible ? 0 : -100 }}
 				transition={{ duration: 0.3 }}>
-				<div className='nav-bar'>
 					<div className='container mx-auto flex justify-between items-start'>
 						<div className='flex items-center justify-between w-full md:w-auto'>
 							<div className='flex items-center justify-center'>
@@ -464,7 +464,6 @@ const Navbar: React.FC = () => {
 							</ul>
 						</div>
 					</div>
-				</div>
 			</motion.nav>
 		</header>
 	);
