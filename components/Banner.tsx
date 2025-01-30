@@ -57,7 +57,8 @@ const Banner: FC<BannerProps> = ({ staticTitle }) => {
 
   return (
     <motion.div
-      className="relative mt-[108px] md:mt-[112px] lg:mt-[120px] w-full h-[390px] overflow-hidden"
+      className="relative w-full h-[390px] overflow-hidden"
+      // mt-[108px]md: mt - [112px] lg: mt - [120px]
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}

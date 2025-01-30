@@ -91,7 +91,7 @@
   }
 
   .nav-bar {
-    @apply flex justify-between items-center h-16 md:h-16 top-0 gap-5 bg-white shadow-lg transition-transform duration-300;
+    @apply flex justify-between items-center h-16 md:h-16 gap-5 bg-white shadow-lg transition-transform duration-300;
   }
 
   .nav-bar ul {
