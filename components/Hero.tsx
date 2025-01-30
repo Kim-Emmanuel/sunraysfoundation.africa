@@ -53,7 +53,7 @@ const Hero: FC = () => {
 
   return (
     <motion.div
-      className="relative w-full h-screen overflow-hidden"
+      className="relative w-full mt-[108px] md:mt-[112px] lg:mt-[120px] h-screen overflow-hidden"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
@@ -64,14 +64,14 @@ const Hero: FC = () => {
             index === currentImage && (
               <motion.div
                 key={index}
-                className="absolute top-0 left-0 w-full h-full"
+                className="absolute  left-0 w-full h-full"
                 initial={{ opacity: 0, scale: 1.2 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 1.2 }}
                 transition={{ duration: 1 }}
               >
                 {/* Dark overlay */}
-                <div className="absolute top-0 left-0 w-full h-full bg-black/30"></div>
+                <div className="absolute  left-0 w-full h-full bg-black/30"></div>
                 {/* Image */}
                 <Image
                   src={image.src}
