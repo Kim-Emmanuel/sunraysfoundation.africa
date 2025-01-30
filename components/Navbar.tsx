@@ -15,7 +15,7 @@ import {
 import { motion } from "framer-motion";
 
 const Navbar: React.FC = () => {
-	const [isVisible, setIsVisible] = useState(true);
+	const [isVisible, setIsVisible] = useState(false);
 	const [lastScrollY, setLastScrollY] = useState(0);
 	const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 	const [showHeaderContent, setShowHeaderContent] = useState(true);
