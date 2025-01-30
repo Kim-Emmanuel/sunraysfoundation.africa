@@ -53,7 +53,7 @@ const Hero: FC = () => {
 
   return (
     <motion.div
-      className="relative w-full  h-screen overflow-hidden"
+      className="relative w-full mt-[108px] lg:mt-[120px] h-screen overflow-hidden"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
