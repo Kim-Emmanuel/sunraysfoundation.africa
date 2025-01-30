@@ -67,407 +67,406 @@ const Navbar: React.FC = () => {
 	}, [lastScrollY]);
 
 	return (
-		<motion.nav
-			className='fixed top-0 w-full bg-white z-50'
-			initial={{ y: 0 }}
-			animate={{ y: isVisible ? 0 : -100 }}
-			transition={{ duration: 0.3 }}>
-			<header>
-				{showHeaderContent && (
-					<div className='bg-primary py-2 px-2'>
-						<div className='container mx-auto'>
-							<div className='flex items-center'>
-								<div className='hidden md:block w-full md:w-3/4'>
-									<div className='flex flex-wrap'>
-										<div className='w-full md:w-1/4'>
-											<p className='text-gray-900 text-xs md:text-xs lg:text-sm'>
-												SOUTH SDN OFFICE
-												<br />
-												+211 929 975 708
-											</p>
-										</div>
-										<div className='w-full md:w-1/4'>
-											<p className='text-gray-900 text-xs md:text-xs lg:text-sm'>
-												KENYA OFFICE
-												<br />
-												+254 702 676 918
-											</p>
-										</div>
-										<div className='w-full md:w-1/4'>
-											<p className='text-gray-900 text-xs md:text-xs lg:text-sm'>
-												UGANDA OFFICE
-												<br />
-												+256 766 959 352
-											</p>
-										</div>
-										<div className='w-full md:w-1/4'>
-											<p className='text-gray-900 text-xs md:text-xs lg:text-sm'>
-												LESOTHO OFFICE
-												<br />
-												+266 5680 8083
-											</p>
-										</div>
+		<header className='top-0 w-full z-50'>
+			{showHeaderContent && (
+				<div className='bg-primary py-2 px-2'>
+					<div className='container mx-auto'>
+						<div className='flex items-center'>
+							<div className='hidden md:block w-full md:w-3/4'>
+								<div className='flex flex-wrap'>
+									<div className='w-full md:w-1/4'>
+										<p className='text-gray-900 text-xs md:text-xs lg:text-sm'>
+											SOUTH SDN OFFICE
+											<br />
+											+211 929 975 708
+										</p>
 									</div>
-								</div>
-								<div className='w-full md:w-1/4 flex justify-end items-center'>
-									<div className='flex space-x-3'>
-										<Link
-											href='https://www.facebook.com/profile.php?id=61553897036925'
-											className='text-white'>
-											<div className='hover:scale-110 hover:bg-[#ffffff] rounded-full p-1 transition-all duration-200'>
-												<Image
-													src='/facebook.svg'
-													alt='Facebook Logo'
-													width={20}
-													height={20}
-												/>
-											</div>
-										</Link>
-										<Link
-											href='https://www.instagram.com/sunra_ysfoundation19/'
-											className='text-white'>
-											<div className='hover:scale-110 hover:bg-[#ffffff] rounded-full p-1 transition-all duration-200'>
-												<Image
-													src='/instagram.svg'
-													alt='Instagram Logo'
-													width={20}
-													height={20}
-												/>
-											</div>
-										</Link>
-										<Link href='#' className='text-white'>
-											<div className='hover:scale-110 hover:bg-[#ffffff] rounded-full p-1 transition-all duration-200'>
-												<Image
-													src='/linkedin.svg'
-													alt='LinkedIn Logo'
-													width={20}
-													height={20}
-												/>
-											</div>
-										</Link>
-										<Link
-											href='https://www.youtube.com/@SunRaysFoundation'
-											className='text-white'>
-											<div className='hover:scale-110 hover:bg-[#ffffff] rounded-full p-1 transition-all duration-200'>
-												<Image
-													src='/youtube.svg'
-													alt='YouTube Logo'
-													width={20}
-													height={20}
-												/>
-											</div>
-										</Link>
+									<div className='w-full md:w-1/4'>
+										<p className='text-gray-900 text-xs md:text-xs lg:text-sm'>
+											KENYA OFFICE
+											<br />
+											+254 702 676 918
+										</p>
+									</div>
+									<div className='w-full md:w-1/4'>
+										<p className='text-gray-900 text-xs md:text-xs lg:text-sm'>
+											UGANDA OFFICE
+											<br />
+											+256 766 959 352
+										</p>
+									</div>
+									<div className='w-full md:w-1/4'>
+										<p className='text-gray-900 text-xs md:text-xs lg:text-sm'>
+											LESOTHO OFFICE
+											<br />
+											+266 5680 8083
+										</p>
 									</div>
 								</div>
 							</div>
-						</div>
-					</div>
-				)}
-			</header>
-
-			<div className='nav-bar'>
-				<div className='container mx-auto flex justify-between items-start'>
-					<div className='flex items-center justify-between w-full md:w-auto'>
-						<div className='flex items-center justify-center'>
-							<Link href='/'>
-								<Image
-									src='/logo.svg'
-									alt='Sunrays Foundation Logo'
-									width={100}
-									height={100}
-									className='object-cover'
-									priority // Ensures the logo loads quickly
-								/>
-							</Link>
-						</div>
-
-						<button
-							className='md:hidden text-white focus:outline-none'
-							onClick={() => handleDropdown("mobileMenu")}>
-							<div
-								className={clsx("menu-icon", { open: openDropdown === "mobileMenu" })}>
-								<motion.div
-									className='bar'
-									animate={
-										openDropdown === "mobileMenu"
-											? { rotate: 45, y: 9 }
-											: { rotate: 0, y: 0 }
-									}
-									transition={{ type: "spring", stiffness: 200, damping: 10 }}
-								/>
-								<motion.div
-									className='bar'
-									animate={
-										openDropdown === "mobileMenu"
-											? { rotate: -45, y: -9 }
-											: { rotate: 0, y: 0 }
-									}
-									transition={{ type: "spring", stiffness: 200, damping: 10 }}
-								/>
+							<div className='w-full md:w-1/4 flex justify-end items-center'>
+								<div className='flex space-x-3'>
+									<Link
+										href='https://www.facebook.com/profile.php?id=61553897036925'
+										className='text-white'>
+										<div className='hover:scale-110 hover:bg-[#ffffff] rounded-full p-1 transition-all duration-200'>
+											<Image
+												src='/facebook.svg'
+												alt='Facebook Logo'
+												width={20}
+												height={20}
+											/>
+										</div>
+									</Link>
+									<Link
+										href='https://www.instagram.com/sunra_ysfoundation19/'
+										className='text-white'>
+										<div className='hover:scale-110 hover:bg-[#ffffff] rounded-full p-1 transition-all duration-200'>
+											<Image
+												src='/instagram.svg'
+												alt='Instagram Logo'
+												width={20}
+												height={20}
+											/>
+										</div>
+									</Link>
+									<Link href='#' className='text-white'>
+										<div className='hover:scale-110 hover:bg-[#ffffff] rounded-full p-1 transition-all duration-200'>
+											<Image
+												src='/linkedin.svg'
+												alt='LinkedIn Logo'
+												width={20}
+												height={20}
+											/>
+										</div>
+									</Link>
+									<Link
+										href='https://www.youtube.com/@SunRaysFoundation'
+										className='text-white'>
+										<div className='hover:scale-110 hover:bg-[#ffffff] rounded-full p-1 transition-all duration-200'>
+											<Image
+												src='/youtube.svg'
+												alt='YouTube Logo'
+												width={20}
+												height={20}
+											/>
+										</div>
+									</Link>
+								</div>
 							</div>
-						</button>
-					</div>
-
-					<div
-						className={clsx("w-full md:flex md:items-center md:w-auto", {
-							"mobile-screen": openDropdown === "mobileMenu",
-							hidden: openDropdown !== "mobileMenu",
-						})}>
-						<ul className='md:flex md:space-x-4 mt-4 md:mt-0'>
-							<li className='relative'>
-								<DropdownMenu>
-									<DropdownMenuTrigger asChild>
-										<Link
-											href='/who-we-are'
-											className={clsx("custom-link", {
-												"active-link":
-													isActiveLink("/who-we-are") ||
-													isActiveLink("/about-us") ||
-													isActiveLink("/our-history"),
-											})}>
-											Who we are
-										</Link>
-									</DropdownMenuTrigger>
-									<DropdownMenuContent>
-										<DropdownMenuItem asChild>
-											<Link
-												href='/about-us'
-												className={clsx("hover:!text-primary cursor-pointer", {
-													"active-link": isActiveLink("/about-us"),
-												})}
-												onClick={closeDropdown}>
-												About Us
-											</Link>
-										</DropdownMenuItem>
-										<DropdownMenuSeparator />
-										<DropdownMenuItem asChild>
-											<Link
-												href='/our-history'
-												className={clsx("hover:!text-primary cursor-pointer", {
-													"active-link": isActiveLink("/our-history"),
-												})}
-												onClick={closeDropdown}>
-												Our History
-											</Link>
-										</DropdownMenuItem>
-									</DropdownMenuContent>
-								</DropdownMenu>
-							</li>
-							<li className='relative'>
-								<DropdownMenu>
-									<DropdownMenuTrigger asChild>
-										<Link
-											href='/our-programs'
-											className={clsx("custom-link", {
-												"active-link":
-													isActiveLink("/our-programs") ||
-													isActiveLink("/education-and-scholarships") ||
-													isActiveLink("/economic-empowerment") ||
-													isActiveLink("/protection-and-advocacy") ||
-													isActiveLink("/peacebuilding-and-reconciliation") ||
-													isActiveLink("/agriculture-and-food-sovereignty") ||
-													isActiveLink("/basic-health-and-well-being") ||
-													isActiveLink("/cultural-awareness-and-education"),
-											})}>
-											Our Programs
-										</Link>
-									</DropdownMenuTrigger>
-									<DropdownMenuContent>
-										<DropdownMenuItem asChild>
-											<Link
-												href='/education-and-scholarships'
-												className={clsx("hover:!text-primary cursor-pointer", {
-													"active-link": isActiveLink("/education-and-scholarships"),
-												})}
-												onClick={closeDropdown}>
-												Education & Scholarships
-											</Link>
-										</DropdownMenuItem>
-										<DropdownMenuSeparator />
-										<DropdownMenuItem asChild>
-											<Link
-												href='/economic-empowerment'
-												className={clsx("hover:!text-primary cursor-pointer", {
-													"active-link": isActiveLink("/economic-empowerment"),
-												})}
-												onClick={closeDropdown}>
-												Economic Empowerment
-											</Link>
-										</DropdownMenuItem>
-										<DropdownMenuSeparator />
-										<DropdownMenuItem asChild>
-											<Link
-												href='/protection-and-advocacy'
-												className={clsx("hover:!text-primary cursor-pointer", {
-													"active-link": isActiveLink("/protection-and-advocacy"),
-												})}
-												onClick={closeDropdown}>
-												Protection & Advocacy
-											</Link>
-										</DropdownMenuItem>
-										<DropdownMenuSeparator />
-										<DropdownMenuItem asChild>
-											<Link
-												href='/peacebuilding-and-reconciliation'
-												className={clsx("hover:!text-primary cursor-pointer", {
-													"active-link": isActiveLink("/peacebuilding-and-reconciliation"),
-												})}
-												onClick={closeDropdown}>
-												Peacebuilding & Reconciliation
-											</Link>
-										</DropdownMenuItem>
-										<DropdownMenuSeparator />
-										<DropdownMenuItem asChild>
-											<Link
-												href='/agriculture-and-food-sovereignty'
-												className={clsx("hover:!text-primary cursor-pointer", {
-													"active-link": isActiveLink("/agriculture-and-food-sovereignty"),
-												})}
-												onClick={closeDropdown}>
-												Agriculture & Food sovereignty
-											</Link>
-										</DropdownMenuItem>
-										<DropdownMenuSeparator />
-										<DropdownMenuItem asChild>
-											<Link
-												href='/basic-health-and-well-being'
-												className={clsx("hover:!text-primary cursor-pointer", {
-													"active-link": isActiveLink("/basic-health-and-well-being"),
-												})}
-												onClick={closeDropdown}>
-												Basic Health & Well-being
-											</Link>
-										</DropdownMenuItem>
-										<DropdownMenuSeparator />
-										<DropdownMenuItem asChild>
-											<Link
-												href='/cultural-awareness-and-education'
-												className={clsx("hover:!text-primary cursor-pointer", {
-													"active-link": isActiveLink("/cultural-awareness-and-education"),
-												})}
-												onClick={closeDropdown}>
-												Cultural Awareness & Education
-											</Link>
-										</DropdownMenuItem>
-									</DropdownMenuContent>
-								</DropdownMenu>
-							</li>
-							<li className='relative'>
-								<DropdownMenu>
-									<DropdownMenuTrigger asChild>
-										<Link
-											href='/impact'
-											className={clsx("custom-link", {
-												"active-link":
-													isActiveLink("/impact") ||
-													isActiveLink("/success-stories") ||
-													isActiveLink("/gallery"),
-											})}>
-											Impacts
-										</Link>
-									</DropdownMenuTrigger>
-									<DropdownMenuContent>
-										<DropdownMenuItem asChild>
-											<Link
-												href='/success-stories'
-												className={clsx("hover:!text-primary cursor-pointer", {
-													"active-link": isActiveLink("/success-stories"),
-												})}
-												onClick={closeDropdown}>
-												Success Stories
-											</Link>
-										</DropdownMenuItem>
-										<DropdownMenuSeparator />
-										<DropdownMenuItem asChild>
-											<Link
-												href='/gallery'
-												className={clsx("hover:!text-primary cursor-pointer", {
-													"active-link": isActiveLink("/gallery"),
-												})}
-												onClick={closeDropdown}>
-												Gallery
-											</Link>
-										</DropdownMenuItem>
-									</DropdownMenuContent>
-								</DropdownMenu>
-							</li>
-							<li className='relative'>
-								<DropdownMenu>
-									<DropdownMenuTrigger asChild>
-										<Link
-											href='/Where-we-are'
-											className={clsx("custom-link", {
-												"active-link":
-													isActiveLink("/where-we-are") ||
-													isActiveLink("/south-sudan") ||
-													isActiveLink("/kenya") ||
-													isActiveLink("/uganda") ||
-													isActiveLink("/lesotho"),
-											})}>
-											Where we are
-										</Link>
-									</DropdownMenuTrigger>
-									<DropdownMenuContent>
-										<DropdownMenuItem asChild>
-											<Link
-												href='/south-sudan'
-												className={clsx("hover:!text-primary cursor-pointer", {
-													"active-link": isActiveLink("/south-sudan"),
-												})}
-												onClick={closeDropdown}>
-												South Sudan
-											</Link>
-										</DropdownMenuItem>
-										<DropdownMenuSeparator />
-										<DropdownMenuItem asChild>
-											<Link
-												href='/kenya'
-												className={clsx("hover:!text-primary cursor-pointer", {
-													"active-link": isActiveLink("/kenya"),
-												})}
-												onClick={closeDropdown}>
-												Kenya
-											</Link>
-										</DropdownMenuItem>
-										<DropdownMenuSeparator />
-										<DropdownMenuItem asChild>
-											<Link
-												href='/uganda'
-												className={clsx("hover:!text-primary cursor-pointer", {
-													"active-link": isActiveLink("/uganda"),
-												})}
-												onClick={closeDropdown}>
-												Uganda
-											</Link>
-										</DropdownMenuItem>
-										<DropdownMenuSeparator />
-										<DropdownMenuItem asChild>
-											<Link
-												href='/lesotho'
-												className={clsx("hover:!text-primary cursor-pointer", {
-													"active-link": isActiveLink("/lesotho"),
-												})}
-												onClick={closeDropdown}>
-												Lesotho
-											</Link>
-										</DropdownMenuItem>
-									</DropdownMenuContent>
-								</DropdownMenu>
-							</li>
-							<li>
-								<Link
-									href='/contact'
-									className={clsx("custom-link", {
-										"active-link": isActiveLink("/contact"),
-									})}>
-									Contact
-								</Link>
-							</li>
-						</ul>
+						</div>
 					</div>
 				</div>
-			</div>
-		</motion.nav>
+			)}
+
+			<motion.nav
+				initial={{ y: 0 }}
+				animate={{ y: isVisible ? 0 : -100 }}
+				transition={{ duration: 0.3 }}>
+				<div className='nav-bar'>
+					<div className='container mx-auto flex justify-between items-start'>
+						<div className='flex items-center justify-between w-full md:w-auto'>
+							<div className='flex items-center justify-center'>
+								<Link href='/'>
+									<Image
+										src='/logo.svg'
+										alt='Sunrays Foundation Logo'
+										width={100}
+										height={100}
+										className='object-cover'
+										priority // Ensures the logo loads quickly
+									/>
+								</Link>
+							</div>
+
+							<button
+								className='md:hidden text-white focus:outline-none'
+								onClick={() => handleDropdown("mobileMenu")}>
+								<div
+									className={clsx("menu-icon", { open: openDropdown === "mobileMenu" })}>
+									<motion.div
+										className='bar'
+										animate={
+											openDropdown === "mobileMenu"
+												? { rotate: 45, y: 9 }
+												: { rotate: 0, y: 0 }
+										}
+										transition={{ type: "spring", stiffness: 200, damping: 10 }}
+									/>
+									<motion.div
+										className='bar'
+										animate={
+											openDropdown === "mobileMenu"
+												? { rotate: -45, y: -9 }
+												: { rotate: 0, y: 0 }
+										}
+										transition={{ type: "spring", stiffness: 200, damping: 10 }}
+									/>
+								</div>
+							</button>
+						</div>
+
+						<div
+							className={clsx("w-full md:flex md:items-center md:w-auto", {
+								"mobile-screen": openDropdown === "mobileMenu",
+								hidden: openDropdown !== "mobileMenu",
+							})}>
+							<ul className='md:flex md:space-x-4 mt-4 md:mt-0'>
+								<li className='relative'>
+									<DropdownMenu>
+										<DropdownMenuTrigger asChild>
+											<Link
+												href='/who-we-are'
+												className={clsx("custom-link", {
+													"active-link":
+														isActiveLink("/who-we-are") ||
+														isActiveLink("/about-us") ||
+														isActiveLink("/our-history"),
+												})}>
+												Who we are
+											</Link>
+										</DropdownMenuTrigger>
+										<DropdownMenuContent>
+											<DropdownMenuItem asChild>
+												<Link
+													href='/about-us'
+													className={clsx("hover:!text-primary cursor-pointer", {
+														"active-link": isActiveLink("/about-us"),
+													})}
+													onClick={closeDropdown}>
+													About Us
+												</Link>
+											</DropdownMenuItem>
+											<DropdownMenuSeparator />
+											<DropdownMenuItem asChild>
+												<Link
+													href='/our-history'
+													className={clsx("hover:!text-primary cursor-pointer", {
+														"active-link": isActiveLink("/our-history"),
+													})}
+													onClick={closeDropdown}>
+													Our History
+												</Link>
+											</DropdownMenuItem>
+										</DropdownMenuContent>
+									</DropdownMenu>
+								</li>
+								<li className='relative'>
+									<DropdownMenu>
+										<DropdownMenuTrigger asChild>
+											<Link
+												href='/our-programs'
+												className={clsx("custom-link", {
+													"active-link":
+														isActiveLink("/our-programs") ||
+														isActiveLink("/education-and-scholarships") ||
+														isActiveLink("/economic-empowerment") ||
+														isActiveLink("/protection-and-advocacy") ||
+														isActiveLink("/peacebuilding-and-reconciliation") ||
+														isActiveLink("/agriculture-and-food-sovereignty") ||
+														isActiveLink("/basic-health-and-well-being") ||
+														isActiveLink("/cultural-awareness-and-education"),
+												})}>
+												Our Programs
+											</Link>
+										</DropdownMenuTrigger>
+										<DropdownMenuContent>
+											<DropdownMenuItem asChild>
+												<Link
+													href='/education-and-scholarships'
+													className={clsx("hover:!text-primary cursor-pointer", {
+														"active-link": isActiveLink("/education-and-scholarships"),
+													})}
+													onClick={closeDropdown}>
+													Education & Scholarships
+												</Link>
+											</DropdownMenuItem>
+											<DropdownMenuSeparator />
+											<DropdownMenuItem asChild>
+												<Link
+													href='/economic-empowerment'
+													className={clsx("hover:!text-primary cursor-pointer", {
+														"active-link": isActiveLink("/economic-empowerment"),
+													})}
+													onClick={closeDropdown}>
+													Economic Empowerment
+												</Link>
+											</DropdownMenuItem>
+											<DropdownMenuSeparator />
+											<DropdownMenuItem asChild>
+												<Link
+													href='/protection-and-advocacy'
+													className={clsx("hover:!text-primary cursor-pointer", {
+														"active-link": isActiveLink("/protection-and-advocacy"),
+													})}
+													onClick={closeDropdown}>
+													Protection & Advocacy
+												</Link>
+											</DropdownMenuItem>
+											<DropdownMenuSeparator />
+											<DropdownMenuItem asChild>
+												<Link
+													href='/peacebuilding-and-reconciliation'
+													className={clsx("hover:!text-primary cursor-pointer", {
+														"active-link": isActiveLink("/peacebuilding-and-reconciliation"),
+													})}
+													onClick={closeDropdown}>
+													Peacebuilding & Reconciliation
+												</Link>
+											</DropdownMenuItem>
+											<DropdownMenuSeparator />
+											<DropdownMenuItem asChild>
+												<Link
+													href='/agriculture-and-food-sovereignty'
+													className={clsx("hover:!text-primary cursor-pointer", {
+														"active-link": isActiveLink("/agriculture-and-food-sovereignty"),
+													})}
+													onClick={closeDropdown}>
+													Agriculture & Food sovereignty
+												</Link>
+											</DropdownMenuItem>
+											<DropdownMenuSeparator />
+											<DropdownMenuItem asChild>
+												<Link
+													href='/basic-health-and-well-being'
+													className={clsx("hover:!text-primary cursor-pointer", {
+														"active-link": isActiveLink("/basic-health-and-well-being"),
+													})}
+													onClick={closeDropdown}>
+													Basic Health & Well-being
+												</Link>
+											</DropdownMenuItem>
+											<DropdownMenuSeparator />
+											<DropdownMenuItem asChild>
+												<Link
+													href='/cultural-awareness-and-education'
+													className={clsx("hover:!text-primary cursor-pointer", {
+														"active-link": isActiveLink("/cultural-awareness-and-education"),
+													})}
+													onClick={closeDropdown}>
+													Cultural Awareness & Education
+												</Link>
+											</DropdownMenuItem>
+										</DropdownMenuContent>
+									</DropdownMenu>
+								</li>
+								<li className='relative'>
+									<DropdownMenu>
+										<DropdownMenuTrigger asChild>
+											<Link
+												href='/impact'
+												className={clsx("custom-link", {
+													"active-link":
+														isActiveLink("/impact") ||
+														isActiveLink("/success-stories") ||
+														isActiveLink("/gallery"),
+												})}>
+												Impacts
+											</Link>
+										</DropdownMenuTrigger>
+										<DropdownMenuContent>
+											<DropdownMenuItem asChild>
+												<Link
+													href='/success-stories'
+													className={clsx("hover:!text-primary cursor-pointer", {
+														"active-link": isActiveLink("/success-stories"),
+													})}
+													onClick={closeDropdown}>
+													Success Stories
+												</Link>
+											</DropdownMenuItem>
+											<DropdownMenuSeparator />
+											<DropdownMenuItem asChild>
+												<Link
+													href='/gallery'
+													className={clsx("hover:!text-primary cursor-pointer", {
+														"active-link": isActiveLink("/gallery"),
+													})}
+													onClick={closeDropdown}>
+													Gallery
+												</Link>
+											</DropdownMenuItem>
+										</DropdownMenuContent>
+									</DropdownMenu>
+								</li>
+								<li className='relative'>
+									<DropdownMenu>
+										<DropdownMenuTrigger asChild>
+											<Link
+												href='/Where-we-are'
+												className={clsx("custom-link", {
+													"active-link":
+														isActiveLink("/where-we-are") ||
+														isActiveLink("/south-sudan") ||
+														isActiveLink("/kenya") ||
+														isActiveLink("/uganda") ||
+														isActiveLink("/lesotho"),
+												})}>
+												Where we are
+											</Link>
+										</DropdownMenuTrigger>
+										<DropdownMenuContent>
+											<DropdownMenuItem asChild>
+												<Link
+													href='/south-sudan'
+													className={clsx("hover:!text-primary cursor-pointer", {
+														"active-link": isActiveLink("/south-sudan"),
+													})}
+													onClick={closeDropdown}>
+													South Sudan
+												</Link>
+											</DropdownMenuItem>
+											<DropdownMenuSeparator />
+											<DropdownMenuItem asChild>
+												<Link
+													href='/kenya'
+													className={clsx("hover:!text-primary cursor-pointer", {
+														"active-link": isActiveLink("/kenya"),
+													})}
+													onClick={closeDropdown}>
+													Kenya
+												</Link>
+											</DropdownMenuItem>
+											<DropdownMenuSeparator />
+											<DropdownMenuItem asChild>
+												<Link
+													href='/uganda'
+													className={clsx("hover:!text-primary cursor-pointer", {
+														"active-link": isActiveLink("/uganda"),
+													})}
+													onClick={closeDropdown}>
+													Uganda
+												</Link>
+											</DropdownMenuItem>
+											<DropdownMenuSeparator />
+											<DropdownMenuItem asChild>
+												<Link
+													href='/lesotho'
+													className={clsx("hover:!text-primary cursor-pointer", {
+														"active-link": isActiveLink("/lesotho"),
+													})}
+													onClick={closeDropdown}>
+													Lesotho
+												</Link>
+											</DropdownMenuItem>
+										</DropdownMenuContent>
+									</DropdownMenu>
+								</li>
+								<li>
+									<Link
+										href='/contact'
+										className={clsx("custom-link", {
+											"active-link": isActiveLink("/contact"),
+										})}>
+										Contact
+									</Link>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</motion.nav>
+		</header>
 	);
 };
 
