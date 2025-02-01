@@ -3,7 +3,7 @@
 import Image from 'next/image'
 // import { X } from 'lucide-react'
 import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog'
-import { ImageType } from '@/types/image'
+import { ImageType } from '@/lib/types/image'
 import { Button } from '@/components/ui/button'
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden'
 
