@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     site: '@sunraysfoundation',
     // images: '/logo.svg', // Update this line according to your needs
   },
-};
+} 
 
 export default function Page() {
 return <main>

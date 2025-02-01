@@ -372,8 +372,8 @@ const Navbar: React.FC = () => {
 											className={clsx("custom-link", {
 												"active-link":
 													isActiveLink("/impact") ||
-													isActiveLink("/success-stories") ||
-													isActiveLink("/gallery"),
+													isActiveLink("/impacts/success-stories") ||
+													isActiveLink("/impacts/gallery"),
 											})}>
 											Impacts
 										</Link>
@@ -381,9 +381,9 @@ const Navbar: React.FC = () => {
 									<DropdownMenuContent>
 										<DropdownMenuItem asChild>
 											<Link
-												href='/success-stories'
+												href='/impacts/success-stories'
 												className={clsx("hover:!text-primary cursor-pointer", {
-													"active-link": isActiveLink("/success-stories"),
+													"active-link": isActiveLink("/impacts/success-stories"),
 												})}
 												onClick={closeDropdown}>
 												Success Stories
@@ -392,9 +392,9 @@ const Navbar: React.FC = () => {
 										<DropdownMenuSeparator />
 										<DropdownMenuItem asChild>
 											<Link
-												href='/gallery'
+												href='/impacts/gallery'
 												className={clsx("hover:!text-primary cursor-pointer", {
-													"active-link": isActiveLink("/gallery"),
+													"active-link": isActiveLink("/impacts/gallery"),
 												})}
 												onClick={closeDropdown}>
 												Gallery
