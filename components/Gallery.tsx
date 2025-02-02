@@ -8,7 +8,7 @@ import { ImageType } from "@/lib/types/image";
 import { GalleryImageModal } from "@/components/gallery-image-modal";
 import { Button } from "@/components/ui/button";
 
-const CATEGORIES = ["All", "Women", "School"];
+const CATEGORIES = ["All", "Agriculture", "Basic", "Cultural", "Economics", "Education", "Peacebuilding", "Protection"];
 
 export function Gallery() {
 	const [selectedCategory, setSelectedCategory] = useState("All");
@@ -42,7 +42,7 @@ export function Gallery() {
 						className='relative group overflow-hidden rounded-lg cursor-pointer'
 						onClick={() => setSelectedImage(image)}>
 						<Image
-							src={image.url}
+							src={image.src}
 							alt={image.alt}
 							width={600}
 							height={400}

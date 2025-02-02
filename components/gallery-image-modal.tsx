@@ -23,11 +23,12 @@ export function GalleryImageModal({ image, onClose }: GalleryImageModalProps) {
         <div className="grid grid-cols-1 md:grid-cols-2">
           <div className="relative aspect-square">
             <Image 
-              src={image.url} 
+              src={image.src} 
               alt={image.alt} 
               fill 
               className="object-cover"
               sizes="(max-width: 768px) 100vw, 50vw"
+              priority
             />
           </div>
           <div className="p-6 flex flex-col justify-center">
