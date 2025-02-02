@@ -1,4 +1,4 @@
-import { ImageType } from '@/types/image'
+import { ImageType } from '@/lib/types/image'
 
 export const GALLERY_IMAGES: ImageType[] = [
   {
