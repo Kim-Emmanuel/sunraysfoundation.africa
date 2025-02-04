@@ -24,12 +24,13 @@ export function Gallery() {
 			initial={{ opacity: 0, y: -50 }}
 			whileInView={{ opacity: 1, y: 0 }}
 			transition={{ duration: 0.9 }}>
-			<div className='flex justify-center mb-8 space-x-4'>
+			<div className='flex flex-wrap justify-center mb-8 space-x-2 sm:space-x-4'>
 				{CATEGORIES.map((category) => (
 					<Button
 						key={category}
 						variant={selectedCategory === category ? "default" : "outline"}
-						onClick={() => setSelectedCategory(category)}>
+						onClick={() => setSelectedCategory(category)}
+						className='mb-2 sm:mb-4'>
 						{category}
 					</Button>
 				))}
