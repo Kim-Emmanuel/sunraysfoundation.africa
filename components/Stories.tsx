@@ -3,7 +3,7 @@
 import { useState, useCallback } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { Quote, ChevronLeft, ChevronRight, Tag, Folder } from "lucide-react";
+import { Quote, ChevronLeft, ChevronRight, Tag, Folder, X } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -143,7 +143,7 @@ const StoryCard = ({ story, onSelect }: { story: SuccessStory; onSelect: () => v
   </motion.div>
 );
 
-// Extracted StoryDetailModal component
+// Modified StoryDetailModal component
 const StoryDetailModal = ({ 
   story, 
   onClose 
@@ -152,7 +152,7 @@ const StoryDetailModal = ({
   onClose: () => void;
 }) => (
   <Dialog open={!!story} onOpenChange={onClose}>
-    <DialogContent className="max-w-6xl">
+    <DialogContent className="max-w-6xl max-h-[90vh] overflow-y-auto p-4 sm:p-6">
       {story && (
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -160,54 +160,78 @@ const StoryDetailModal = ({
           exit={{ opacity: 0, y: -20 }}
           transition={{ duration: 0.3 }}
         >
-          <DialogHeader>
-            <DialogTitle className="text-3xl font-bold">
+          <DialogHeader className="relative">
+            {/* Close button - visible only on larger screens */}
+            <button
+              onClick={onClose}
+              className="absolute right-0 top-0 p-2 rounded-full hover:bg-gray-100 transition-colors hidden sm:block"
+              aria-label="Close dialog"
+            >
+              <X className="w-5 h-5" />
+            </button>
+            <DialogTitle className="text-xl sm:text-2xl md:text-3xl font-bold pr-8">
               {story.title}
             </DialogTitle>
           </DialogHeader>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-            <div className="relative h-96">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mt-4 sm:mt-6">
+            <div className="relative h-48 sm:h-64 md:h-80">
               <Image
                 src={story.image}
                 alt={story.title}
                 fill
                 className="object-cover rounded-lg"
+                sizes="(max-width: 768px) 100vw, 50vw"
+                priority
               />
             </div>
 
-            <div className="relative">
+            <div className="relative px-0 sm:px-4">
               <Quote
-                className="absolute -top-8 -left-8 text-primary/20 w-24 h-24"
+                className="hidden md:block absolute -top-8 -left-8 text-primary/20 w-16 h-16 sm:w-24 sm:h-24"
                 strokeWidth={1}
               />
-              <p className="text-lg leading-relaxed relative z-10">
+              <p className="text-sm sm:text-base md:text-lg leading-relaxed relative z-10">
                 {story.fullStory}
               </p>
               {story.author && (
-                <div className="mt-4 text-sm text-muted-foreground">
+                <div className="mt-3 sm:mt-4 text-xs sm:text-sm text-muted-foreground">
                   — {story.author}
                 </div>
               )}
-              {story.tags && (
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {story.tags.map((tag, index) => (
-                    <span
-                      key={index}
-                      className="text-sm text-primary flex items-center"
-                    >
-                      <Tag className="w-4 h-4 mr-1" /> {tag}
-                    </span>
-                  ))}
-                </div>
-              )}
-              {story.category && (
-                <div className="mt-4 text-sm text-muted-foreground flex items-center">
-                  <Folder className="w-4 h-4 mr-1" />{" "}
-                  {story.category}
-                </div>
-              )}
+              <div className="mt-3 sm:mt-4 space-y-2 sm:space-y-3">
+                {story.tags && (
+                  <div className="flex flex-wrap gap-1.5 sm:gap-2">
+                    {story.tags.map((tag, index) => (
+                      <span
+                        key={index}
+                        className="text-xs sm:text-sm text-primary flex items-center bg-primary/10 px-2 py-1 rounded-full"
+                      >
+                        <Tag className="w-3 h-3 sm:w-4 sm:h-4 mr-1" /> {tag}
+                      </span>
+                    ))}
+                  </div>
+                )}
+                {story.category && (
+                  <div className="text-xs sm:text-sm text-muted-foreground flex items-center">
+                    <Folder className="w-3 h-3 sm:w-4 sm:h-4 mr-1" />{" "}
+                    {story.category}
+                  </div>
+                )}
+              </div>
             </div>
+          </div>
+
+          {/* Mobile close button - visible only on small screens */}
+          <div className="mt-6 sm:hidden">
+            <button
+              onClick={onClose}
+              className="w-full py-3 px-4 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors flex items-center justify-center gap-2"
+              aria-label="Close dialog"
+            >
+              <X className="w-4 h-4" />
+              <span>Close</span>
+            </button>
           </div>
         </motion.div>
       )}
