@@ -1,6 +1,7 @@
 import Banner from '@/components/Banner';
 import { Gallery } from '@/components/Gallery';
 import type { Metadata } from 'next';
+import { Suspense } from 'react';
 
 export const metadata: Metadata = {
   title: 'Gallery | Sun Rays Foundation',
@@ -38,7 +39,10 @@ export default function Page() {
     <main className="">
       <Banner staticTitle="Explore our gallery" />
       {/* Add your gallery component here */}
+      <Suspense fallback={<div>Loading...</div>}>
       <Gallery/>
+    </Suspense>
+      
     </main>
   )
 }
