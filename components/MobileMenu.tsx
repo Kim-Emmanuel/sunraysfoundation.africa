@@ -14,7 +14,7 @@ interface MobileMenuProps {
 }
 
 const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
-	const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+	const [, setOpenDropdown] = useState<string | null>(null);
 	const pathname = usePathname();
 
 	const closeDropdown = () => setOpenDropdown(null);
