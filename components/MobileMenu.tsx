@@ -8,79 +8,28 @@ import Link from "next/link";
 import { Search } from "lucide-react";
 import { Input } from "./ui/input";
 
-interface ScrollState {
-	isVisible: boolean;
-	lastScrollY: number;
-	showHeaderContent: boolean;
-}
-
 interface MobileMenuProps {
 	isOpen: boolean;
 	onClose: () => void;
-	activeSection: string;
 }
 
-const MobileMenu: React.FC<MobileMenuProps> = ({
-	isOpen,
-	onClose,
-	activeSection,
-}) => {
-	const [scrollState, setScrollState] = useState<ScrollState>({
-		isVisible: true,
-		lastScrollY: 0,
-		showHeaderContent: true,
-	});
+const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
 	const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 	const pathname = usePathname();
-
-	const handleDropdown = (dropdown: string) => {
-		if (window.innerWidth < 768) {
-			setOpenDropdown(openDropdown === dropdown ? null : dropdown);
-		}
-	};
 
 	const closeDropdown = () => setOpenDropdown(null);
 
 	const isActiveLink = (link: string) => pathname === link;
 
 	useEffect(() => {
-		const SCROLL_THRESHOLD = 50; // Add threshold for better control
-
-		const controlNavbar = () => {
-			if (typeof window === undefined) return;
-
-			const currentScrollY = window.scrollY;
-
-			setScrollState((prevState) => ({
-				isVisible:
-					currentScrollY < SCROLL_THRESHOLD ||
-					currentScrollY < prevState.lastScrollY,
-				lastScrollY: currentScrollY,
-				showHeaderContent: currentScrollY < SCROLL_THRESHOLD,
-			}));
-		};
-
 		const handleResize = () => {
 			if (window.innerWidth >= 768) {
 				closeDropdown();
 			}
 		};
 
-		// Throttle scroll event for better performance
-		let timeoutId: NodeJS.Timeout;
-		const throttledControlNavbar = () => {
-			if (timeoutId) clearTimeout(timeoutId);
-			timeoutId = setTimeout(controlNavbar, 150);
-		};
-
-		window.addEventListener("scroll", throttledControlNavbar);
 		window.addEventListener("resize", handleResize);
-
-		return () => {
-			window.removeEventListener("scroll", throttledControlNavbar);
-			window.removeEventListener("resize", handleResize);
-			if (timeoutId) clearTimeout(timeoutId);
-		};
+		return () => window.removeEventListener("resize", handleResize);
 	}, []);
 
 	return (
