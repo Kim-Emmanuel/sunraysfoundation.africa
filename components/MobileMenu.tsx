@@ -11,6 +11,7 @@ import { Input } from "./ui/input";
 interface MobileMenuProps {
 	isOpen: boolean;
 	onClose: () => void;
+	activeSection?: string;
 }
 
 const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
