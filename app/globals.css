@@ -4,6 +4,12 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Custom smooth scroll with offset and duration simulation */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px; /* Equivalent to offset={-100} */
+  transition: scroll-padding-top 0.5s ease; /* Simulates duration={500} */
+}
 
 @layer utilities {
   /* .flex-between {

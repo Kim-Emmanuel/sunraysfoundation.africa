@@ -67,6 +67,10 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
 											isActiveLink("/about-us") ||
 											isActiveLink("/our-history"),
 									})}
+									onClick={() => {
+										closeDropdown();
+										onClose();
+									}}
 								>
 									Who we are
 								</Link>
@@ -81,7 +85,10 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
 												"active-link": isActiveLink("/about-us"),
 											}
 										)}
-										onClick={closeDropdown}
+										onClick={() => {
+											closeDropdown();
+											onClose();
+										}}
 									>
 										About Us
 									</Link>
@@ -96,7 +103,10 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
 												"active-link": isActiveLink("/our-history"),
 											}
 										)}
-										onClick={closeDropdown}
+										onClick={() => {
+											closeDropdown();
+											onClose();
+										}}
 									>
 										Our History
 									</Link>
@@ -120,6 +130,10 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
 											isActiveLink("/basic-health-and-well-being") ||
 											isActiveLink("/cultural-awareness-and-education"),
 									})}
+									onClick={() => {
+										closeDropdown();
+										onClose();
+									}}
 								>
 									Our Programs
 								</Link>
@@ -127,16 +141,17 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
 							<ul className="space-y-3 pl-4">
 								<li>
 									<Link
-										href="/education-and-scholarships"
+										href="/our-programs#education"
 										className={clsx(
 											"block text-gray-600 hover:text-primary focus:text-primary",
 											{
-												"active-link": isActiveLink(
-													"/education-and-scholarships"
-												),
+												"active-link": isActiveLink("/our-programs#education"),
 											}
 										)}
-										onClick={closeDropdown}
+										onClick={() => {
+											closeDropdown();
+											onClose();
+										}}
 									>
 										Education & Scholarships
 									</Link>
@@ -144,14 +159,17 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
 
 								<li>
 									<Link
-										href="/economic-empowerment"
+										href="/our-programs#economic"
 										className={clsx(
 											"block text-gray-600 hover:text-primary focus:text-primary",
 											{
-												"active-link": isActiveLink("/economic-empowerment"),
+												"active-link": isActiveLink("/our-programs#economic"),
 											}
 										)}
-										onClick={closeDropdown}
+										onClick={() => {
+											closeDropdown();
+											onClose();
+										}}
 									>
 										Economic Empowerment
 									</Link>
@@ -159,14 +177,17 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
 
 								<li>
 									<Link
-										href="/protection-and-advocacy"
+										href="/our-programs#protection"
 										className={clsx(
 											"block text-gray-600 hover:text-primary focus:text-primary",
 											{
-												"active-link": isActiveLink("/protection-and-advocacy"),
+												"active-link": isActiveLink("/our-programs#protection"),
 											}
 										)}
-										onClick={closeDropdown}
+										onClick={() => {
+											closeDropdown();
+											onClose();
+										}}
 									>
 										Protection & Advocacy
 									</Link>
@@ -174,16 +195,19 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
 
 								<li>
 									<Link
-										href="/peacebuilding-and-reconciliation"
+										href="/our-programs#peacebuilding"
 										className={clsx(
 											"block text-gray-600 hover:text-primary focus:text-primary",
 											{
 												"active-link": isActiveLink(
-													"/peacebuilding-and-reconciliation"
+													"/our-programs#peacebuilding"
 												),
 											}
 										)}
-										onClick={closeDropdown}
+										onClick={() => {
+											closeDropdown();
+											onClose();
+										}}
 									>
 										Peacebuilding & Reconciliation
 									</Link>
@@ -191,16 +215,19 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
 
 								<li>
 									<Link
-										href="/agriculture-and-food-sovereignty"
+										href="/our-programs#agriculture"
 										className={clsx(
 											"block text-gray-600 hover:text-primary focus:text-primary",
 											{
 												"active-link": isActiveLink(
-													"/agriculture-and-food-sovereignty"
+													"/our-programs#agriculture"
 												),
 											}
 										)}
-										onClick={closeDropdown}
+										onClick={() => {
+											closeDropdown();
+											onClose();
+										}}
 									>
 										Agriculture & Food sovereignty
 									</Link>
@@ -208,16 +235,19 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
 
 								<li>
 									<Link
-										href="/basic-health-and-well-being"
+										href="/our-programs#basic-health"
 										className={clsx(
 											"block text-gray-600 hover:text-primary focus:text-primary",
 											{
 												"active-link": isActiveLink(
-													"/basic-health-and-well-being"
+													"/our-programs#basic-health"
 												),
 											}
 										)}
-										onClick={closeDropdown}
+										onClick={() => {
+											closeDropdown();
+											onClose();
+										}}
 									>
 										Basic Health & Well-being
 									</Link>
@@ -225,16 +255,17 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
 
 								<li>
 									<Link
-										href="/cultural-awareness-and-education"
+										href="/our-programs#cultural"
 										className={clsx(
 											"block text-gray-600 hover:text-primary focus:text-primary",
 											{
-												"active-link": isActiveLink(
-													"/cultural-awareness-and-education"
-												),
+												"active-link": isActiveLink("/our-programs#cultural"),
 											}
 										)}
-										onClick={closeDropdown}
+										onClick={() => {
+											closeDropdown();
+											onClose();
+										}}
 									>
 										Cultural Awareness & Education
 									</Link>
@@ -253,6 +284,10 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
 											isActiveLink("/impacts/success-stories") ||
 											isActiveLink("/impacts/gallery"),
 									})}
+									onClick={() => {
+										closeDropdown();
+										onClose();
+									}}
 								>
 									Impacts
 								</Link>
@@ -267,7 +302,10 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
 												"active-link": isActiveLink("/impacts/success-stories"),
 											}
 										)}
-										onClick={closeDropdown}
+										onClick={() => {
+											closeDropdown();
+											onClose();
+										}}
 									>
 										Success Stories
 									</Link>
@@ -282,7 +320,10 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
 												"active-link": isActiveLink("/impacts/gallery"),
 											}
 										)}
-										onClick={closeDropdown}
+										onClick={() => {
+											closeDropdown();
+											onClose();
+										}}
 									>
 										Gallery
 									</Link>
@@ -303,6 +344,10 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
 											isActiveLink("/where-we-are#uganda") ||
 											isActiveLink("/where-we-are#lesotho"),
 									})}
+									onClick={() => {
+										closeDropdown();
+										onClose();
+									}}
 								>
 									Where we are
 								</Link>
@@ -310,7 +355,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
 							<ul className="space-y-3 pl-4">
 								<li>
 									<Link
-										href="/where-we-are#south-sudan" // Anchor link to South Sudan section
+										href="/where-we-are#south-sudan"
 										className={clsx(
 											"block text-gray-600 hover:text-primary focus:text-primary",
 											{
@@ -319,7 +364,10 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
 												),
 											}
 										)}
-										onClick={closeDropdown}
+										onClick={() => {
+											closeDropdown();
+											onClose();
+										}}
 									>
 										South Sudan
 									</Link>
@@ -327,14 +375,17 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
 
 								<li>
 									<Link
-										href="/where-we-are#kenya" // Anchor link to Kenya section
+										href="/where-we-are#kenya"
 										className={clsx(
 											"block text-gray-600 hover:text-primary focus:text-primary",
 											{
 												"active-link": isActiveLink("/where-we-are#kenya"),
 											}
 										)}
-										onClick={closeDropdown}
+										onClick={() => {
+											closeDropdown();
+											onClose();
+										}}
 									>
 										Kenya
 									</Link>
@@ -342,14 +393,17 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
 
 								<li>
 									<Link
-										href="/where-we-are#uganda" // Anchor link to Uganda section
+										href="/where-we-are#uganda"
 										className={clsx(
 											"block text-gray-600 hover:text-primary focus:text-primary",
 											{
 												"active-link": isActiveLink("/where-we-are#uganda"),
 											}
 										)}
-										onClick={closeDropdown}
+										onClick={() => {
+											closeDropdown();
+											onClose();
+										}}
 									>
 										Uganda
 									</Link>
@@ -357,14 +411,17 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
 
 								<li>
 									<Link
-										href="/where-we-are#lesotho" // Anchor link to Lesotho section
+										href="/where-we-are#lesotho"
 										className={clsx(
 											"block text-gray-600 hover:text-primary focus:text-primary",
 											{
 												"active-link": isActiveLink("/where-we-are#lesotho"),
 											}
 										)}
-										onClick={closeDropdown}
+										onClick={() => {
+											closeDropdown();
+											onClose();
+										}}
 									>
 										Lesotho
 									</Link>
@@ -381,6 +438,10 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
 										"active-link":
 											isActiveLink("/contact") || isActiveLink("/contact"),
 									})}
+									onClick={() => {
+										closeDropdown();
+										onClose();
+									}}
 								>
 									Get in Touch
 								</Link>
@@ -395,7 +456,10 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
 												"active-link": isActiveLink("/contact"),
 											}
 										)}
-										onClick={closeDropdown}
+										onClick={() => {
+											closeDropdown();
+											onClose();
+										}}
 									>
 										Contact Us
 									</Link>

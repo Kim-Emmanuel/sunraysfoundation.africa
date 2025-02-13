@@ -62,7 +62,11 @@ export default {
 			},
 		},
 	},
-	plugins: [require("tailwindcss-animate"), require("tailwindcss-textshadow")],
+	plugins: [
+    require("tailwindcss-animate"), 
+    require("tailwindcss-textshadow"), 
+    require('@tailwindcss/typography')
+],
 } satisfies Config;
 
 // import type { Config } from "tailwindcss";

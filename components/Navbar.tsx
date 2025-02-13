@@ -278,12 +278,12 @@ const Navbar: React.FC = () => {
 										<DropdownMenuContent>
 											<DropdownMenuItem asChild>
 												<Link
-													href="/education-and-scholarships"
+													href="/our-programs#education" // Updated to use anchor link
 													className={clsx(
 														"hover:!text-primary cursor-pointer",
 														{
 															"active-link": isActiveLink(
-																"/education-and-scholarships"
+																"/our-programs#education"
 															),
 														}
 													)}
@@ -295,12 +295,12 @@ const Navbar: React.FC = () => {
 											<DropdownMenuSeparator />
 											<DropdownMenuItem asChild>
 												<Link
-													href="/economic-empowerment"
+													href="/our-programs#economic" // Updated to use anchor link
 													className={clsx(
 														"hover:!text-primary cursor-pointer",
 														{
 															"active-link": isActiveLink(
-																"/economic-empowerment"
+																"/our-programs#economic"
 															),
 														}
 													)}
@@ -312,12 +312,12 @@ const Navbar: React.FC = () => {
 											<DropdownMenuSeparator />
 											<DropdownMenuItem asChild>
 												<Link
-													href="/protection-and-advocacy"
+													href="/our-programs#protection" // Updated to use anchor link
 													className={clsx(
 														"hover:!text-primary cursor-pointer",
 														{
 															"active-link": isActiveLink(
-																"/protection-and-advocacy"
+																"/our-programs#protection"
 															),
 														}
 													)}
@@ -329,12 +329,12 @@ const Navbar: React.FC = () => {
 											<DropdownMenuSeparator />
 											<DropdownMenuItem asChild>
 												<Link
-													href="/peacebuilding-and-reconciliation"
+													href="/our-programs#peacebuilding" // Updated to use anchor link
 													className={clsx(
 														"hover:!text-primary cursor-pointer",
 														{
 															"active-link": isActiveLink(
-																"/peacebuilding-and-reconciliation"
+																"/our-programs#peacebuilding"
 															),
 														}
 													)}
@@ -346,29 +346,29 @@ const Navbar: React.FC = () => {
 											<DropdownMenuSeparator />
 											<DropdownMenuItem asChild>
 												<Link
-													href="/agriculture-and-food-sovereignty"
+													href="/our-programs#agriculture" // Updated to use anchor link
 													className={clsx(
 														"hover:!text-primary cursor-pointer",
 														{
 															"active-link": isActiveLink(
-																"/agriculture-and-food-sovereignty"
+																"/our-programs#agriculture"
 															),
 														}
 													)}
 													onClick={closeDropdown}
 												>
-													Agriculture & Food sovereignty
+													Agriculture & Food Sovereignty
 												</Link>
 											</DropdownMenuItem>
 											<DropdownMenuSeparator />
 											<DropdownMenuItem asChild>
 												<Link
-													href="/basic-health-and-well-being"
+													href="/our-programs#basic-health" // Updated to use anchor link
 													className={clsx(
 														"hover:!text-primary cursor-pointer",
 														{
 															"active-link": isActiveLink(
-																"/basic-health-and-well-being"
+																"/our-programs#basic-health"
 															),
 														}
 													)}
@@ -380,12 +380,12 @@ const Navbar: React.FC = () => {
 											<DropdownMenuSeparator />
 											<DropdownMenuItem asChild>
 												<Link
-													href="/cultural-awareness-and-education"
+													href="/our-programs#cultural" // Updated to use anchor link
 													className={clsx(
 														"hover:!text-primary cursor-pointer",
 														{
 															"active-link": isActiveLink(
-																"/cultural-awareness-and-education"
+																"/our-programs#cultural"
 															),
 														}
 													)}

@@ -46,7 +46,7 @@ export default function Locations({
 	};
 
 	return (
-		<div className={`white_container space-y-8 ${className}`}>
+		<div className={`bg-gradient-to-b from-white to-[#e5ead3] py-16 px-4 sm:px-6 lg:px-8 lg:pt-8 space-y-8 ${className}`}>
 			<div className="text-center mb-8">
 				<h1 className="text-4xl font-bold mb-4 flex items-center justify-center gap-3">
 					<Globe className="w-10 h-10 text-primary" />

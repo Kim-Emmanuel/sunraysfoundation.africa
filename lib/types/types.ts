@@ -12,3 +12,24 @@ export interface SuccessStory {
   category?: string // Added category property
   story?: string // Added story property
 }
+
+export interface Program {
+  id: string;
+  title: string;
+  description: string;
+  imageUrl: string;
+  details: string;
+  callToAction: string;
+  callToActionText: string;
+}
+
+export interface AnimationProps {
+  children: React.ReactNode;
+  animationType: string;
+}
+
+export interface ButtonProps {
+  text: string;
+  onClick: () => void;
+  style?: React.CSSProperties;
+}
