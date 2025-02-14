@@ -43,13 +43,13 @@ const AboutUsSection: React.FC = () => {
 
   return (
     <motion.div
-      className="white_container !bg-[#e5ead3] text-center flex flex-col items-center"
+      className="white_container bg-gradient-to-b from-white to-[#e5ead3] text-center flex flex-col items-center"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
     >
       <div className='sm:px-8 md:px-16 lg:px-24'>
-        <h2 className="text-[#E58824] font-medium text-sm uppercase">{content.title}</h2>
+        <h2 className="text-[#93C740] font-medium text-sm uppercase">{content.title}</h2>
         <h1 className="text-46-normal text-center mt-4">{content.subtitle}</h1>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:grid-cols-3 lg:grid-cols-3 mt-12 md:gap-6 lg:gap-8">

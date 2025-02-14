@@ -13,6 +13,7 @@ import {
 import { Card, CardContent } from "@/components/ui/card";
 import { SuccessStory } from "@/lib/types/types";
 import { useWindowSize } from "@/hooks/useWindowSize";
+import { Button } from "./ui/button";
 
 interface StoriesProps {
 	stories: SuccessStory[];
@@ -54,10 +55,18 @@ export default function Stories({ stories }: StoriesProps) {
 	}, [currentIndex, visibleStories, stories]);
 
 	return (
-		<section className="relative max-w-[1440px] bg-[#e5ead3] mx-auto px-4 sm:px-6 lg:px-8 py-12">
-			<h1 className="text-3xl sm:text-4xl font-bold text-center mb-12 text-gray">
+		<section className="relative max-w-[1440px] bg-white mx-auto px-4 sm:px-6 lg:px-8 py-12">
+			<h1 className="text-3xl sm:text-4xl font-bold text-center mb-10 text-gray">
 				Success Stories
 			</h1>
+
+			<div className="mt-8 mb-8">
+				<p className="customParagraph text-left">
+					We are driven by love and purpose to help vulnerable communities
+					through sustainable, community-based solutions that strengthen
+					resilience and empower the most marginalized in East Africa.
+				</p>
+			</div>
 
 			<div className="relative flex items-center">
 				{/* Navigation Buttons */}
@@ -100,6 +109,30 @@ export default function Stories({ stories }: StoriesProps) {
 				story={selectedStory}
 				onClose={() => setSelectedStory(null)}
 			/>
+
+			<div className="mt-12 flex flex-col items-center"> 
+				<p className="customParagraph text-start max-w-[65ch]">
+					We are driven by love and purpose to help vulnerable communities
+					through sustainable, community-based solutions that strengthen
+					resilience and empower the most marginalized in East Africa.
+				</p>
+
+				<motion.div
+					className="mt-8"
+					initial={{ opacity: 0, y: 20 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{ duration: 0.5, delay: 0.6 }}
+					whileInView={{ opacity: 1, y: 0 }}
+					viewport={{ once: true }}
+				>
+					<Button
+						className="px-8 py-6 text-lg font-semibold text-white transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+					>
+						Join Our Community
+					</Button>
+				</motion.div>
+			</div>
+			
 		</section>
 	);
 }
