@@ -13,7 +13,6 @@ import {
 import { Card, CardContent } from "@/components/ui/card";
 import { SuccessStory } from "@/lib/types/types";
 import { useWindowSize } from "@/hooks/useWindowSize";
-import { Button } from "./ui/button";
 import Link from "next/link";
 import { HiOutlineArrowRight } from "react-icons/hi";
 

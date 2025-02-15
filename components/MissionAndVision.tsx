@@ -2,17 +2,10 @@
 
 import { FC } from "react";
 import { motion } from "framer-motion";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { HiOutlineArrowRight } from "react-icons/hi";
 
 const MissionAndVision: FC = () => {
-	const router = useRouter();
-
-	const handleImpactClick = () => {
-		router.push("/impacts/success-stories");
-	};
-
 	return (
 		<div className="relative bg-gradient-to-b from-white to-[#e5ead3] text-black py-12">
 			<motion.div

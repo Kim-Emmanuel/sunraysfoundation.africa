@@ -1,8 +1,6 @@
-// import Image from "next/image";
 import { FC } from "react";
 import Hero from "@/components/Hero";
 import Welcome from "@/components/Welcome";
-import Image from "next/image";
 import Partners from "@/components/Partners";
 import MissionAndVision from "@/components/MissionAndVision";
 import Stories from "@/components/Stories";
