@@ -2,17 +2,16 @@
 
 import { FC } from "react";
 import { motion } from "framer-motion";
-import { Button } from "./ui/button";
-import { useRouter } from 'next/navigation'
-// import Image from 'next/image';
+import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { HiOutlineArrowRight } from "react-icons/hi";
 
 const MissionAndVision: FC = () => {
+	const router = useRouter();
 
-  const router = useRouter();
-  
-  const handleImpactClick = () => {
-    router.push("/impacts/success-stories");
-  };
+	const handleImpactClick = () => {
+		router.push("/impacts/success-stories");
+	};
 
 	return (
 		<div className="relative bg-gradient-to-b from-white to-[#e5ead3] text-black py-12">
@@ -24,24 +23,7 @@ const MissionAndVision: FC = () => {
 				whileInView={{ opacity: 1 }}
 				viewport={{ once: true }}
 			>
-				{/* <div className="flex flex-row justify-center items-center h-full">
-          <Image
-            src="/images/partner-logos/large-arrow-light.png"
-            alt="large-arrow-light"
-            width={220}
-            height={220}
-            priority
-            className="object-cover"
-          />
-          <Image
-            src="/images/partner-logos/large-arrow-light.png"
-            alt="large-arrow-light"
-            width={220}
-            height={220}
-            priority
-            className="object-cover"
-          />
-        </div> */}
+
 			</motion.div>
 			<div className="relative container mx-auto text-center z-10">
 				<h2 className="text-46-normal !font-medium mb-8">
@@ -90,21 +72,31 @@ const MissionAndVision: FC = () => {
 					</p>
 				</div>
 
-        <motion.div
-          className="mt-12"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          <Button 
-            onClick={handleImpactClick}
-            className="px-8 py-6 text-lg font-semibold text-white transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-          >
-            See Our Impact Stories
-          </Button>
-        </motion.div>
+				<motion.div
+					className="mt-12"
+					initial={{ opacity: 0, y: 20 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{ duration: 0.5, delay: 0.6 }}
+					whileInView={{ opacity: 1, y: 0 }}
+					viewport={{ once: true }}
+				>
+					<Link
+						href="/impacts/gallery"
+						className="custom-link inline-flex items-center justify-center text-gray-800 rounded-lg hover:text-gray-500 font-medium transition-colors group"
+						aria-label="See Our Impact Stories"
+					>
+						<span className="inline-flex items-center">
+							See Our Impact Stories
+							<HiOutlineArrowRight
+								className="ml-2 w-5 h-5 text-primary transition-transform transform group-hover:translate-x-1"
+								aria-hidden="true"
+							/>
+						</span>
+					</Link>
+					<p className="mt-2 customParagraph text-gray-600">
+						We are committed to making a difference in the lives of the most.
+					</p>
+				</motion.div>
 			</div>
 		</div>
 	);

@@ -94,7 +94,7 @@ const Hero: FC = () => {
                     {image.title}
                   </h1>
                   <Button
-                    className="mt-5 py-5 px-6 transition-transform transform hover:scale-105"
+                    className="mt-5 py-5 px-6 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
                     onClick={handleAboutUsClick}
                   >
                     About Us

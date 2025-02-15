@@ -53,7 +53,7 @@ html {
   }
 
   .white_container {
-    @apply w-full bg-white min-h-[530px] flex justify-center items-center flex-col gap-[20px] py-10 px-6;
+    @apply w-full min-h-[530px] flex justify-center items-center flex-col gap-[20px] py-10 px-6;
   }
 
   .green_container {
@@ -114,7 +114,7 @@ html {
   }
 
   .nav-bar a {
-    @apply text-gray-800 font-medium transition-colors duration-300 ease-in-out hover:text-[#93C740];
+    @apply text-gray-800 font-medium transition-colors duration-300 ease-in-out hover:text-gray-500;
   }
 
   .nav-bar ul li:hover ul {
@@ -131,7 +131,7 @@ html {
 
   /* Footer Links */
   .footer-links {
-    @apply text-gray-800 transition-colors duration-300 ease-in-out hover:text-[#93C740];
+    @apply text-gray-800 transition-colors duration-300 ease-in-out hover:text-gray-500;
   }
 
   

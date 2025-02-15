@@ -14,6 +14,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { SuccessStory } from "@/lib/types/types";
 import { useWindowSize } from "@/hooks/useWindowSize";
 import { Button } from "./ui/button";
+import Link from "next/link";
+import { HiOutlineArrowRight } from "react-icons/hi";
 
 interface StoriesProps {
 	stories: SuccessStory[];
@@ -56,7 +58,7 @@ export default function Stories({ stories }: StoriesProps) {
 
 	return (
 		<section className="relative max-w-[1440px] bg-white mx-auto px-4 sm:px-6 lg:px-8 py-12">
-			<h1 className="text-3xl sm:text-4xl font-bold text-center mb-10 text-gray">
+			<h1 className="text-46-normal !font-medium text-center mb-10 text-gray">
 				Success Stories
 			</h1>
 
@@ -110,8 +112,8 @@ export default function Stories({ stories }: StoriesProps) {
 				onClose={() => setSelectedStory(null)}
 			/>
 
-			<div className="mt-12 flex flex-col items-center"> 
-				<p className="customParagraph text-start max-w-[65ch]">
+			<div className="mt-12 flex flex-col items-center">
+				<p className="customParagraph text-center max-w-[65ch]">
 					We are driven by love and purpose to help vulnerable communities
 					through sustainable, community-based solutions that strengthen
 					resilience and empower the most marginalized in East Africa.
@@ -125,14 +127,21 @@ export default function Stories({ stories }: StoriesProps) {
 					whileInView={{ opacity: 1, y: 0 }}
 					viewport={{ once: true }}
 				>
-					<Button
-						className="px-8 py-6 text-lg font-semibold text-white transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+					<Link
+						href="/contact"
+						className="custom-link inline-flex items-center justify-center text-gray-800 rounded-lg hover:text-gray-500 font-medium transition-colors group"
+						aria-label="See Our Impact Stories"
 					>
-						Join Our Community
-					</Button>
+						<span className="inline-flex items-center">
+							Join Our Community
+							<HiOutlineArrowRight
+								className="ml-2 w-5 h-5 text-primary transition-transform transform group-hover:translate-x-1"
+								aria-hidden="true"
+							/>
+						</span>
+					</Link>
 				</motion.div>
 			</div>
-			
 		</section>
 	);
 }
