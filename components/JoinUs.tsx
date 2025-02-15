@@ -44,7 +44,7 @@ const JoinUs: FC = () => {
 						whileInView={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.5 }}
 					>
-						Let's join hands and work together
+						Let&apos;s join hands and work together
 					</motion.h2>
 					<p className="customParagraph text-gray-700 text-start max-w-[55ch]">
 						When we come together, great things happen. Let us collaborate and
