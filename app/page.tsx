@@ -2,7 +2,6 @@ import { FC } from "react";
 import Hero from "@/components/Hero";
 import Welcome from "@/components/Welcome";
 import Partners from "@/components/Partners";
-import MissionAndVision from "@/components/MissionAndVision";
 import Stories from "@/components/Stories";
 import JoinUs from "@/components/JoinUs";
 // import Features from "@/components/Features";
@@ -61,12 +60,9 @@ const Home: FC = () => {
 			<section className="">
 				<Welcome />
 			</section>
-
 			{/* <Features /> */}
-			<Partners />
-			{/* Mission and Vision Section */}
-			<MissionAndVision />
 			<Stories stories={successStories} />
+			<Partners />
       <JoinUs />
 		</>
 	);

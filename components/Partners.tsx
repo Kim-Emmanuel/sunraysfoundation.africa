@@ -39,8 +39,8 @@ const Partners: React.FC = () => {
 	}, [controls, isHovered]);
 
 	return (
-		<section className="py-12 bg-gray-50 mb-12">
-			<div className="mx-auto text-center">
+		<section className="bg-gray-50">
+			<div className="container mx-auto px-4 py-10 sm:px-6 lg:px-8 text-center">
 				<h2 className="heading-partner">Our Partners</h2>
 				<div className="relative w-full max-w-6xl mx-auto">
 					{/* Navigation Arrows */}
@@ -110,7 +110,7 @@ const Partners: React.FC = () => {
 							/>
 						</span>
 					</Link>
-					<p className="mt-2 customParagraph text-gray-600">
+					<p className="mt-2 text-[clamp(1rem,1.5vw,1.25rem)] leading-relaxed text-gray-600">
 						Learn more about our partnerships and how we work together to create
 						a better world.
 					</p>

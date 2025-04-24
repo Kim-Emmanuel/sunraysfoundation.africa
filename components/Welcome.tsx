@@ -16,9 +16,9 @@ const Welcome: FC = () => {
   };
 
   return (
-    <section className="white_container">
+    <section className="container mx-auto px-4 py-10 sm:px-6 lg:px-8">
       <motion.h1
-        className="heading"
+        className="heading !text-center !mb-8"
         initial={{ opacity: 0, y: -50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
@@ -35,7 +35,7 @@ const Welcome: FC = () => {
           <h2 className="sub-heading !max-w-3xl !text-start mb-4">
             Welcome to Sun Rays Foundation!
           </h2>
-          <p className="customParagraph text-gray-700">
+          <p className="text-[clamp(1rem,1.5vw,1.25rem)] text-gray-700 leading-relaxed">
             Founded by a group of South Sudanese youth, Sun Rays Foundation is a humanitarian non-profit organization.
             We are driven by love and purpose to help vulnerable communities through sustainable, community-based
             solutions that strengthen resilience and empower the most marginalized in East Africa.

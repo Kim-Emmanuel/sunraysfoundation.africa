@@ -4,6 +4,7 @@ import "./globals.css";
 import { ReactNode } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import ScrollToTop from "@/components/ScrollToTop";
 
 const workSans = localFont({
   src: [
@@ -105,6 +106,7 @@ const RootLayout = ({
         <Navbar />
         {children}
         <Footer />
+        <ScrollToTop />
       </body>
     </html>
   );

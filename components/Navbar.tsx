@@ -92,7 +92,7 @@ const Navbar: React.FC = () => {
 		<header className="fixed top-0 w-full z-50">
 			{scrollState.showHeaderContent && (
 				<div className="bg-primary py-2 px-2">
-					<div className="container mx-auto">
+					<div className="container mx-auto sm:px-6 lg:px-8">
 						<div className="flex items-center">
 							<div className="hidden md:block w-full md:w-3/4">
 								<div className="flex flex-wrap">
@@ -185,7 +185,7 @@ const Navbar: React.FC = () => {
 			)}
 
 			<motion.nav className="nav-bar bg-white shadow-md">
-				<div className="container mx-auto flex justify-between items-center px-4">
+				<div className="container mx-auto px-4 py-10 sm:px-6 lg:px-8 flex justify-between items-center">
 					{/* Logo */}
 					<Link href="/" className="py-2">
 						<Image

@@ -15,8 +15,8 @@ const JoinUs: FC = () => {
 	};
 
 	return (
-		<section className="white_container bg-gradient-to-b from-white to-[#e5ead3]">
-			<div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+		<section className="py-10 bg-gradient-to-b from-white to-[#e5ead3]">
+			<div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center container mx-auto px-4 py-10 sm:px-6 lg:px-8">
         <motion.div
 					className="relative aspect-video w-full overflow-hidden shadow-lg"
 					initial={{ opacity: 0, scale: 0.8 }}
@@ -33,7 +33,7 @@ const JoinUs: FC = () => {
 				</motion.div>
 
 				<motion.div
-					className="flex flex-col justify-center items-center space-y-8"
+					className="flex flex-col justify-center items-start space-y-8"
 					initial={{ opacity: 0, x: -50 }}
 					whileInView={{ opacity: 1, x: 0 }}
 					transition={{ duration: 0.5 }}
@@ -46,7 +46,7 @@ const JoinUs: FC = () => {
 					>
 						Let&apos;s join hands and work together
 					</motion.h2>
-					<p className="customParagraph text-gray-700 text-start max-w-[55ch]">
+					<p className="text-[clamp(1rem,1.5vw,1.25rem)] text-gray-700 leading-relaxed text-start max-w-[55ch]">
 						When we come together, great things happen. Let us collaborate and
 						change lives. Join us in our mission to make the world a better place.
 					</p>

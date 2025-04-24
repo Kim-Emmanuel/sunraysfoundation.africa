@@ -66,7 +66,7 @@ html {
  /* tag-tri */
 
   .heading {
-    @apply uppercase px-6 py-3 font-work-sans font-extrabold text-gray-800 sm:text-[54px] sm:leading-[64px] text-[36px] leading-[46px] max-w-5xl text-center my-5;
+    @apply uppercase px-6 py-3 font-work-sans font-extrabold text-gray-800 sm:text-[54px] sm:leading-[64px] text-[36px] leading-[46px] w-full text-center my-5;
   }
 
   .sub-heading {

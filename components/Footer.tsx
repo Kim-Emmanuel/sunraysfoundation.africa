@@ -44,8 +44,8 @@ const Footer: FC = () => {
 
 	return (
 		<footer className="border-t-[1px] border-gray-200">
-			<div className="white_container flex flex-col lg:flex-row justify-between gap-8 lg:gap-24">
-				<div className="container w-full lg:w-1/3 flex flex-col gap-8">
+			<div className="container mx-auto px-4 py-10 sm:px-6 lg:px-8 flex flex-col lg:flex-row justify-center items-center gap-8 lg:gap-24">
+				<div className="w-full lg:w-1/3 flex flex-col gap-8">
 					<Link href="/" className="flex items-center gap-3">
 						<Image
 							src="/logo.svg"
@@ -276,25 +276,30 @@ const Footer: FC = () => {
 				</div>
 			</div>
 			{/* BOTTOM */}
-			<div className="green_container px-4 py-2">
-				<div className="text-black flex flex-col md:flex-row gap-2 md:gap-1 justify-center items-center text-xs md:text-sm lg:text-base">
-					<span className="flex items-center">
-						Copyright © {new Date().getFullYear()} All rights reserved | Sunrays
-						Foundation
-						<Image
-							src="/heart-filled.svg"
-							alt="Heart Logo"
-							width={14}
-							height={14}
-							className="ml-1"
-						/>
-					</span>
-				</div>
-				<div className="flex flex-col md:flex-row gap-2 md:gap-4 justify-center items-center text-xs md:text-sm lg:text-base">
-					<span className="text-gray-600">Language</span>
-					<span className="text-gray-800 font-normal">
-						United States | English
-					</span>
+			<div className="green_container px-4 py-3">
+				<div className="flex flex-col md:flex-row flex-wrap justify-center items-center gap-2 md:gap-4 text-xs md:text-sm lg:text-base">
+					{/* Copyright Section */}
+					<div className="flex items-center justify-center text-black">
+						<span className="inline-flex items-baseline gap-1.5">
+							Copyright © {new Date().getFullYear()} All rights reserved |
+							Sunrays Foundation
+							<Image
+								src="/heart-filled.svg"
+								alt="Heart Logo"
+								width={14}
+								height={14}
+								className="inline-block align-middle transform translate-y-[1px]"
+							/>
+						</span>
+					</div>
+
+					{/* Language Selector */}
+					<div className="flex items-center justify-center gap-2 text-gray-600">
+						<span>Language</span>
+						<span className="text-gray-800 font-medium">
+							United States | English
+						</span>
+					</div>
 				</div>
 			</div>
 		</footer>

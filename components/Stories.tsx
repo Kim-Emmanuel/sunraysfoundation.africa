@@ -56,13 +56,13 @@ export default function Stories({ stories }: StoriesProps) {
 	}, [currentIndex, visibleStories, stories]);
 
 	return (
-		<section className="relative max-w-[1440px] bg-white mx-auto px-4 sm:px-6 lg:px-8 py-12">
+		<section className="relative bg-white container mx-auto px-4 py-10 sm:px-6 lg:px-8">
 			<h1 className="text-46-normal !font-medium text-center mb-10 text-gray">
 				Success Stories
 			</h1>
 
-			<div className="mt-8 mb-8">
-				<p className="customParagraph text-left">
+			<div className="mt-8 flex justify-center items-center mb-8">
+				<p className="text-[clamp(1rem,1.5vw,1.25rem)] text-gray-700 text-center leading-relaxed max-w-[65ch]">
 					We are driven by love and purpose to help vulnerable communities
 					through sustainable, community-based solutions that strengthen
 					resilience and empower the most marginalized in East Africa.
@@ -112,7 +112,7 @@ export default function Stories({ stories }: StoriesProps) {
 			/>
 
 			<div className="mt-12 flex flex-col items-center">
-				<p className="customParagraph text-center max-w-[65ch]">
+				<p className="text-[clamp(1rem,1.5vw,1.25rem)] text-gray-700 text-center leading-relaxed max-w-[65ch]">
 					We are driven by love and purpose to help vulnerable communities
 					through sustainable, community-based solutions that strengthen
 					resilience and empower the most marginalized in East Africa.
