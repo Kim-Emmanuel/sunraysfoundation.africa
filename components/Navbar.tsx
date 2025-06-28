@@ -61,13 +61,11 @@ const Navbar: React.FC = () => {
 			const scrollingDown = currentScrollY > lastScrollY;
 			const scrolledPastThreshold = currentScrollY > SCROLL_THRESHOLD;
 
-			setScrollState(
-				(prevState: ScrollState): ScrollState => ({
-					isVisible: !scrollingDown || !scrolledPastThreshold,
-					lastScrollY: currentScrollY,
-					showHeaderContent: !scrolledPastThreshold,
-				})
-			);
+			setScrollState({
+				isVisible: !scrollingDown || !scrolledPastThreshold,
+				lastScrollY: currentScrollY,
+				showHeaderContent: !scrolledPastThreshold,
+			});
 
 			lastScrollY = currentScrollY;
 			ticking = false;
