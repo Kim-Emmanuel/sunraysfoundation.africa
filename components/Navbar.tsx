@@ -38,31 +38,49 @@ const Navbar: React.FC = () => {
 
 	const closeDropdown = () => setOpenDropdown(null);
 
-	const isActiveLink = (link: string) => pathname === link;
+	// Helper for anchor links (pathname + hash)
+	const isActiveLink = (link: string) => {
+		if (!link) return false;
+		// Support for anchor links
+		if (link.includes("#")) {
+			return pathname + window.location.hash === link;
+		}
+		return pathname === link;
+	};
 
+	// Enhanced scroll behavior with smooth transitions
 	useEffect(() => {
-		const SCROLL_THRESHOLD = 50; // Add threshold for better control
+		const SCROLL_THRESHOLD = 50;
+		let lastScrollY = window.scrollY;
+		let ticking = false;
 
 		const controlNavbar = () => {
 			if (typeof window === undefined) return;
 
 			const currentScrollY = window.scrollY;
-
-			interface ScrollState {
-				isVisible: boolean;
-				lastScrollY: number;
-				showHeaderContent: boolean;
-			}
+			const scrollingDown = currentScrollY > lastScrollY;
+			const scrolledPastThreshold = currentScrollY > SCROLL_THRESHOLD;
 
 			setScrollState(
 				(prevState: ScrollState): ScrollState => ({
-					isVisible:
-						currentScrollY < SCROLL_THRESHOLD ||
-						currentScrollY < prevState.lastScrollY,
+					isVisible: !scrollingDown || !scrolledPastThreshold,
 					lastScrollY: currentScrollY,
-					showHeaderContent: currentScrollY < SCROLL_THRESHOLD,
+					showHeaderContent: !scrolledPastThreshold,
 				})
 			);
+
+			lastScrollY = currentScrollY;
+			ticking = false;
+		};
+
+		const handleScroll = () => {
+			if (!ticking) {
+				window.requestAnimationFrame(() => {
+					controlNavbar();
+					ticking = false;
+				});
+				ticking = true;
+			}
 		};
 
 		const handleResize = () => {
@@ -71,53 +89,144 @@ const Navbar: React.FC = () => {
 			}
 		};
 
-		// Throttle scroll event for better performance
-		let timeoutId: NodeJS.Timeout;
-		const throttledControlNavbar = () => {
-			if (timeoutId) clearTimeout(timeoutId);
-			timeoutId = setTimeout(controlNavbar, 150);
-		};
-
-		window.addEventListener("scroll", throttledControlNavbar);
+		window.addEventListener("scroll", handleScroll, { passive: true });
 		window.addEventListener("resize", handleResize);
 
 		return () => {
-			window.removeEventListener("scroll", throttledControlNavbar);
+			window.removeEventListener("scroll", handleScroll);
 			window.removeEventListener("resize", handleResize);
-			if (timeoutId) clearTimeout(timeoutId);
 		};
 	}, []);
 
+	// Desktop navigation with dropdowns
+	const desktopNav = [
+		{
+			label: "Home",
+			href: "/",
+			dropdown: null,
+			active: ["/"],
+		},
+		{
+			label: "Who we are",
+			href: "/who-we-are",
+			dropdown: [
+				{ href: "/about-us", label: "About Us" },
+				{ href: "/our-history", label: "Our History" },
+			],
+			active: ["/who-we-are", "/about-us", "/our-history"],
+		},
+		{
+			label: "Our Programs",
+			href: "/our-programs",
+			dropdown: [
+				{ href: "/our-programs#education", label: "Education & Scholarships" },
+				{ href: "/our-programs#economic", label: "Economic Empowerment" },
+				{ href: "/our-programs#protection", label: "Protection & Advocacy" },
+				{
+					href: "/our-programs#peacebuilding",
+					label: "Peacebuilding & Reconciliation",
+				},
+				{
+					href: "/our-programs#agriculture",
+					label: "Agriculture & Food Sovereignty",
+				},
+				{
+					href: "/our-programs#basic-health",
+					label: "Basic Health & Well-being",
+				},
+				{
+					href: "/our-programs#cultural",
+					label: "Cultural Awareness & Education",
+				},
+			],
+			active: [
+				"/our-programs",
+				"/education-and-scholarships",
+				"/economic-empowerment",
+				"/protection-and-advocacy",
+				"/peacebuilding-and-reconciliation",
+				"/agriculture-and-food-sovereignty",
+				"/basic-health-and-well-being",
+				"/cultural-awareness-and-education",
+			],
+		},
+		{
+			label: "Impacts",
+			href: "/impact",
+			dropdown: [
+				{ href: "/impacts/success-stories", label: "Success Stories" },
+				{ href: "/impacts/gallery", label: "Gallery" },
+			],
+			active: ["/impact", "/impacts/success-stories", "/impacts/gallery"],
+		},
+		{
+			label: "Where we are",
+			href: "/where-we-are",
+			dropdown: [
+				{ href: "/where-we-are#south-sudan", label: "South Sudan" },
+				{ href: "/where-we-are#kenya", label: "Kenya" },
+				{ href: "/where-we-are#uganda", label: "Uganda" },
+				{ href: "/where-we-are#lesotho", label: "Lesotho" },
+			],
+			active: [
+				"/where-we-are",
+				"/where-we-are#south-sudan",
+				"/where-we-are#kenya",
+				"/where-we-are#uganda",
+				"/where-we-are#lesotho",
+			],
+		},
+		{
+			label: "Contact",
+			href: "/contact",
+			dropdown: null,
+			active: ["/contact"],
+		},
+	];
+
 	return (
-		<header className="fixed top-0 w-full z-50">
+		<motion.header
+			className="fixed top-0 w-full z-50"
+			initial={{ y: 0 }}
+			animate={{
+				y: scrollState.isVisible ? 0 : -100,
+				opacity: scrollState.isVisible ? 1 : 0.95,
+			}}
+			transition={{ duration: 0.3 }}
+		>
 			{scrollState.showHeaderContent && (
-				<div className="bg-primary py-2 px-2">
+				<motion.div
+					className="bg-primary py-2 px-2 sm:px-4"
+					initial={{ opacity: 0, y: -20 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{ duration: 0.3 }}
+				>
 					<div className="container mx-auto sm:px-6 lg:px-8">
-						<div className="flex items-center">
+						<div className="flex flex-wrap items-center justify-between">
 							<div className="hidden md:block w-full md:w-3/4">
-								<div className="flex flex-wrap">
-									<div className="w-full md:w-1/4">
+								<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2">
+									<div>
 										<p className="text-gray-900 text-xs md:text-xs lg:text-sm">
 											SOUTH SDN OFFICE
 											<br />
 											+211 929 975 708
 										</p>
 									</div>
-									<div className="w-full md:w-1/4">
+									<div>
 										<p className="text-gray-900 text-xs md:text-xs lg:text-sm">
 											KENYA OFFICE
 											<br />
 											+254 702 676 918
 										</p>
 									</div>
-									<div className="w-full md:w-1/4">
+									<div>
 										<p className="text-gray-900 text-xs md:text-xs lg:text-sm">
 											UGANDA OFFICE
 											<br />
 											+256 766 959 352
 										</p>
 									</div>
-									<div className="w-full md:w-1/4">
+									<div>
 										<p className="text-gray-900 text-xs md:text-xs lg:text-sm">
 											LESOTHO OFFICE
 											<br />
@@ -126,8 +235,8 @@ const Navbar: React.FC = () => {
 									</div>
 								</div>
 							</div>
-							<div className="w-full md:w-1/4 flex justify-end items-center">
-								<div className="flex space-x-3">
+							<div className="w-full md:w-1/4 flex justify-center md:justify-end items-center">
+								<div className="flex space-x-4">
 									<Link
 										href="https://www.facebook.com/profile.php?id=61553897036925"
 										className="text-white"
@@ -181,415 +290,222 @@ const Navbar: React.FC = () => {
 							</div>
 						</div>
 					</div>
-				</div>
+				</motion.div>
 			)}
 
-			<motion.nav className="nav-bar bg-white shadow-md">
-				<div className="container mx-auto px-4 py-10 sm:px-6 lg:px-8 flex justify-between items-center">
+			<motion.nav
+				className={clsx(
+					"nav-bar bg-white backdrop-blur-md bg-opacity-90",
+					"transition-all duration-300 ease-in-out",
+					{
+						"shadow-lg": !scrollState.showHeaderContent,
+						"shadow-md": scrollState.showHeaderContent,
+					}
+				)}
+			>
+				<div className="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
 					{/* Logo */}
 					<Link href="/" className="py-2">
 						<Image
 							src="/logo.svg"
 							alt="Sunrays Foundation Logo"
-							width={100}
-							height={100}
-							className="object-cover"
+							width={80}
+							height={80}
+							className="object-cover w-[80px] sm:w-[90px] md:w-[100px]"
 							priority
 						/>
 					</Link>
 
 					{/* Desktop Menu - hidden on mobile */}
-					<div className="hidden md:flex items-center space-x-6">
-						<div
-							className={clsx("w-full md:flex md:items-center md:w-auto", {
-								"mobile-screen": openDropdown === "mobileMenu",
-								hidden: openDropdown !== "mobileMenu",
-							})}
-						>
-							<ul className="md:flex md:space-x-4 mt-4 md:mt-0">
-								<li className="relative">
-									<DropdownMenu>
-										<DropdownMenuTrigger asChild>
+					<nav
+						className="hidden md:flex items-center space-x-2 lg:space-x-6"
+						aria-label="Main navigation"
+					>
+						<ul className="flex flex-col md:flex-row md:space-x-4 mt-4 md:mt-0">
+							{desktopNav.map((item) => (
+								<li
+									key={item.label}
+									className="relative group focus-within:z-50"
+								>
+									{item.dropdown ? (
+										<DropdownMenu>
+											<DropdownMenuTrigger asChild>
+												<motion.button
+													whileHover="hover"
+													whileFocus="hover"
+													initial="rest"
+													animate={
+														item.active?.some((l) => isActiveLink(l))
+															? "active"
+															: "rest"
+													}
+													variants={{
+														rest: { color: "#374151" }, // text-gray-700
+														hover: { color: "#eab308" }, // text-primary
+														active: { color: "#eab308" },
+													}}
+													className={clsx(
+														"custom-link relative inline-block px-4 py-2 font-medium focus:outline-none"
+													)}
+													aria-haspopup="menu"
+													aria-expanded="false"
+													tabIndex={0}
+												>
+													<span className="relative z-10">{item.label}</span>
+													<motion.span
+														layoutId="nav-underline"
+														className="absolute left-0 bottom-0 w-full h-0.5 bg-primary origin-left"
+														variants={{
+															rest: { scaleX: 0 },
+															hover: {
+																scaleX: 1,
+																transition: { duration: 0.3 },
+															},
+															active: {
+																scaleX: 1,
+																transition: { duration: 0.3 },
+															},
+														}}
+														style={{ transformOrigin: "left" }}
+													/>
+												</motion.button>
+											</DropdownMenuTrigger>
+											<DropdownMenuContent className="animate-in fade-in-80 slide-in-from-top-1 z-50 min-w-[14rem] overflow-hidden rounded-md border border-gray-100 bg-white/95 backdrop-blur-md p-1 text-gray-700 shadow-2xl">
+												{item.dropdown.map((drop, idx) => (
+													<React.Fragment key={drop.href}>
+														<DropdownMenuItem
+															asChild
+															className="relative flex cursor-pointer select-none items-center rounded-sm px-3 py-2 text-sm outline-none transition-colors hover:bg-primary hover:text-white focus:bg-primary focus:text-white"
+														>
+															<Link
+																href={drop.href}
+																className={clsx({
+																	"text-primary font-semibold": isActiveLink(
+																		drop.href
+																	),
+																})}
+																onClick={closeDropdown}
+																tabIndex={0}
+															>
+																{drop.label}
+															</Link>
+														</DropdownMenuItem>
+														{idx !== item.dropdown.length - 1 && (
+															<DropdownMenuSeparator className="my-1 h-px bg-gray-100" />
+														)}
+													</React.Fragment>
+												))}
+											</DropdownMenuContent>
+										</DropdownMenu>
+									) : (
+										<motion.div
+											whileHover="hover"
+											whileFocus="hover"
+											initial="rest"
+											animate={
+												item.active?.some((l) => isActiveLink(l))
+													? "active"
+													: "rest"
+											}
+											variants={{
+												rest: { color: "#374151" },
+												hover: { color: "#eab308" },
+												active: { color: "#eab308" },
+											}}
+											className="inline-block px-4 py-2 font-medium relative"
+										>
 											<Link
-												href="/who-we-are"
-												className={clsx("custom-link", {
-													"active-link":
-														isActiveLink("/who-we-are") ||
-														isActiveLink("/about-us") ||
-														isActiveLink("/our-history"),
-												})}
+												href={item.href}
+												className="relative z-10 focus:outline-none"
+												tabIndex={0}
 											>
-												Who we are
+												{item.label}
 											</Link>
-										</DropdownMenuTrigger>
-										<DropdownMenuContent>
-											<DropdownMenuItem asChild>
-												<Link
-													href="/about-us"
-													className={clsx(
-														"hover:!text-primary cursor-pointer",
-														{
-															"active-link": isActiveLink("/about-us"),
-														}
-													)}
-													onClick={closeDropdown}
-												>
-													About Us
-												</Link>
-											</DropdownMenuItem>
-											<DropdownMenuSeparator />
-											<DropdownMenuItem asChild>
-												<Link
-													href="/our-history"
-													className={clsx(
-														"hover:!text-primary cursor-pointer",
-														{
-															"active-link": isActiveLink("/our-history"),
-														}
-													)}
-													onClick={closeDropdown}
-												>
-													Our History
-												</Link>
-											</DropdownMenuItem>
-										</DropdownMenuContent>
-									</DropdownMenu>
+											<motion.span
+												layoutId="nav-underline"
+												className="absolute left-0 bottom-0 w-full h-0.5 bg-primary origin-left"
+												variants={{
+													rest: { scaleX: 0 },
+													hover: { scaleX: 1, transition: { duration: 0.3 } },
+													active: { scaleX: 1, transition: { duration: 0.3 } },
+												}}
+												style={{ transformOrigin: "left" }}
+											/>
+										</motion.div>
+									)}
 								</li>
-								<li className="relative">
-									<DropdownMenu>
-										<DropdownMenuTrigger asChild>
-											<Link
-												href="/our-programs"
-												className={clsx("custom-link", {
-													"active-link":
-														isActiveLink("/our-programs") ||
-														isActiveLink("/education-and-scholarships") ||
-														isActiveLink("/economic-empowerment") ||
-														isActiveLink("/protection-and-advocacy") ||
-														isActiveLink("/peacebuilding-and-reconciliation") ||
-														isActiveLink("/agriculture-and-food-sovereignty") ||
-														isActiveLink("/basic-health-and-well-being") ||
-														isActiveLink("/cultural-awareness-and-education"),
-												})}
-											>
-												Our Programs
-											</Link>
-										</DropdownMenuTrigger>
-										<DropdownMenuContent>
-											<DropdownMenuItem asChild>
-												<Link
-													href="/our-programs#education" // Updated to use anchor link
-													className={clsx(
-														"hover:!text-primary cursor-pointer",
-														{
-															"active-link": isActiveLink(
-																"/our-programs#education"
-															),
-														}
-													)}
-													onClick={closeDropdown}
-												>
-													Education & Scholarships
-												</Link>
-											</DropdownMenuItem>
-											<DropdownMenuSeparator />
-											<DropdownMenuItem asChild>
-												<Link
-													href="/our-programs#economic" // Updated to use anchor link
-													className={clsx(
-														"hover:!text-primary cursor-pointer",
-														{
-															"active-link": isActiveLink(
-																"/our-programs#economic"
-															),
-														}
-													)}
-													onClick={closeDropdown}
-												>
-													Economic Empowerment
-												</Link>
-											</DropdownMenuItem>
-											<DropdownMenuSeparator />
-											<DropdownMenuItem asChild>
-												<Link
-													href="/our-programs#protection" // Updated to use anchor link
-													className={clsx(
-														"hover:!text-primary cursor-pointer",
-														{
-															"active-link": isActiveLink(
-																"/our-programs#protection"
-															),
-														}
-													)}
-													onClick={closeDropdown}
-												>
-													Protection & Advocacy
-												</Link>
-											</DropdownMenuItem>
-											<DropdownMenuSeparator />
-											<DropdownMenuItem asChild>
-												<Link
-													href="/our-programs#peacebuilding" // Updated to use anchor link
-													className={clsx(
-														"hover:!text-primary cursor-pointer",
-														{
-															"active-link": isActiveLink(
-																"/our-programs#peacebuilding"
-															),
-														}
-													)}
-													onClick={closeDropdown}
-												>
-													Peacebuilding & Reconciliation
-												</Link>
-											</DropdownMenuItem>
-											<DropdownMenuSeparator />
-											<DropdownMenuItem asChild>
-												<Link
-													href="/our-programs#agriculture" // Updated to use anchor link
-													className={clsx(
-														"hover:!text-primary cursor-pointer",
-														{
-															"active-link": isActiveLink(
-																"/our-programs#agriculture"
-															),
-														}
-													)}
-													onClick={closeDropdown}
-												>
-													Agriculture & Food Sovereignty
-												</Link>
-											</DropdownMenuItem>
-											<DropdownMenuSeparator />
-											<DropdownMenuItem asChild>
-												<Link
-													href="/our-programs#basic-health" // Updated to use anchor link
-													className={clsx(
-														"hover:!text-primary cursor-pointer",
-														{
-															"active-link": isActiveLink(
-																"/our-programs#basic-health"
-															),
-														}
-													)}
-													onClick={closeDropdown}
-												>
-													Basic Health & Well-being
-												</Link>
-											</DropdownMenuItem>
-											<DropdownMenuSeparator />
-											<DropdownMenuItem asChild>
-												<Link
-													href="/our-programs#cultural" // Updated to use anchor link
-													className={clsx(
-														"hover:!text-primary cursor-pointer",
-														{
-															"active-link": isActiveLink(
-																"/our-programs#cultural"
-															),
-														}
-													)}
-													onClick={closeDropdown}
-												>
-													Cultural Awareness & Education
-												</Link>
-											</DropdownMenuItem>
-										</DropdownMenuContent>
-									</DropdownMenu>
-								</li>
-								<li className="relative">
-									<DropdownMenu>
-										<DropdownMenuTrigger asChild>
-											<Link
-												href="/impact"
-												className={clsx("custom-link", {
-													"active-link":
-														isActiveLink("/impact") ||
-														isActiveLink("/impacts/success-stories") ||
-														isActiveLink("/impacts/gallery"),
-												})}
-											>
-												Impacts
-											</Link>
-										</DropdownMenuTrigger>
-										<DropdownMenuContent>
-											<DropdownMenuItem asChild>
-												<Link
-													href="/impacts/success-stories"
-													className={clsx(
-														"hover:!text-primary cursor-pointer",
-														{
-															"active-link": isActiveLink(
-																"/impacts/success-stories"
-															),
-														}
-													)}
-													onClick={closeDropdown}
-												>
-													Success Stories
-												</Link>
-											</DropdownMenuItem>
-											<DropdownMenuSeparator />
-											<DropdownMenuItem asChild>
-												<Link
-													href="/impacts/gallery"
-													className={clsx(
-														"hover:!text-primary cursor-pointer",
-														{
-															"active-link": isActiveLink("/impacts/gallery"),
-														}
-													)}
-													onClick={closeDropdown}
-												>
-													Gallery
-												</Link>
-											</DropdownMenuItem>
-										</DropdownMenuContent>
-									</DropdownMenu>
-								</li>
-								<li className="relative">
-									<DropdownMenu>
-										<DropdownMenuTrigger asChild>
-											<Link
-												href="/where-we-are"
-												className={clsx("custom-link", {
-													"active-link":
-														isActiveLink("/where-we-are") ||
-														isActiveLink("/where-we-are#south-sudan") ||
-														isActiveLink("/where-we-are#kenya") ||
-														isActiveLink("/where-we-are#uganda") ||
-														isActiveLink("/where-we-are#lesotho"),
-												})}
-											>
-												Where we are
-											</Link>
-										</DropdownMenuTrigger>
-										<DropdownMenuContent>
-											<DropdownMenuItem asChild>
-												<Link
-													href="/where-we-are#south-sudan" // Anchor link to South Sudan section
-													className={clsx(
-														"hover:!text-primary cursor-pointer",
-														{
-															"active-link": isActiveLink(
-																"/where-we-are#south-sudan"
-															),
-														}
-													)}
-													onClick={closeDropdown}
-												>
-													South Sudan
-												</Link>
-											</DropdownMenuItem>
-											<DropdownMenuSeparator />
-											<DropdownMenuItem asChild>
-												<Link
-													href="/where-we-are#kenya" // Anchor link to Kenya section
-													className={clsx(
-														"hover:!text-primary cursor-pointer",
-														{
-															"active-link": isActiveLink(
-																"/where-we-are#kenya"
-															),
-														}
-													)}
-													onClick={closeDropdown}
-												>
-													Kenya
-												</Link>
-											</DropdownMenuItem>
-											<DropdownMenuSeparator />
-											<DropdownMenuItem asChild>
-												<Link
-													href="/where-we-are#uganda" // Anchor link to Uganda section
-													className={clsx(
-														"hover:!text-primary cursor-pointer",
-														{
-															"active-link": isActiveLink(
-																"/where-we-are#uganda"
-															),
-														}
-													)}
-													onClick={closeDropdown}
-												>
-													Uganda
-												</Link>
-											</DropdownMenuItem>
-											<DropdownMenuSeparator />
-											<DropdownMenuItem asChild>
-												<Link
-													href="/where-we-are#lesotho" // Anchor link to Lesotho section
-													className={clsx(
-														"hover:!text-primary cursor-pointer",
-														{
-															"active-link": isActiveLink(
-																"/where-we-are#lesotho"
-															),
-														}
-													)}
-													onClick={closeDropdown}
-												>
-													Lesotho
-												</Link>
-											</DropdownMenuItem>
-										</DropdownMenuContent>
-									</DropdownMenu>
-								</li>
-								<li>
-									<Link
-										href="/contact"
-										className={clsx("custom-link", {
-											"active-link": isActiveLink("/contact"),
-										})}
-									>
-										Contact
-									</Link>
-								</li>
-							</ul>
-						</div>
-					</div>
+							))}
+						</ul>
+					</nav>
 
 					{/* Mobile Menu Button */}
-					<button
-						className="md:hidden p-2"
+					<motion.button
+						className="md:hidden flex justify-end "
 						onClick={() => handleDropdown("mobileMenu")}
-						aria-label="Toggle menu"
+						aria-label="Toggle navigation menu"
+						aria-expanded={openDropdown === "mobileMenu"}
+						whileTap={{ scale: 0.96 }}
+						whileHover={{ scale: 1.02 }}
 					>
-						<div
-							className={clsx("menu-icon", {
-								open: openDropdown === "mobileMenu",
-							})}
-						>
-							<motion.div
-								className="bar"
-								animate={
-									openDropdown === "mobileMenu"
-										? { rotate: 45, y: 9 }
-										: { rotate: 0, y: 0 }
-								}
-								transition={{ type: "spring", stiffness: 200, damping: 10 }}
-							/>
-							<motion.div
-								className="bar"
-								animate={
-									openDropdown === "mobileMenu"
-										? { rotate: -45, y: -9 }
-										: { rotate: 0, y: 0 }
-								}
-								transition={{ type: "spring", stiffness: 200, damping: 10 }}
-							/>
+						<div className="relative w-12 h-12 p-3 rounded-xl bg-white/80 backdrop-blur-sm border border-gray-200/50 shadow-lg hover:shadow-xl hover:bg-white/90 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 focus:ring-offset-2">
+							<div className="relative w-6 h-5">
+								{/* Top line */}
+								<motion.span
+									className="absolute left-0 w-full h-0.5 bg-gray-700 rounded-full origin-center"
+									initial={false}
+									animate={{
+										top: openDropdown === "mobileMenu" ? "50%" : "0%",
+										rotate: openDropdown === "mobileMenu" ? 45 : 0,
+										translateY: openDropdown === "mobileMenu" ? "-50%" : "0%",
+									}}
+									transition={{
+										type: "spring",
+										stiffness: 300,
+										damping: 25,
+										duration: 0.3,
+									}}
+								/>
+
+								{/* Middle line */}
+								<motion.span
+									className="absolute left-0 top-1/2 w-full h-0.5 bg-gray-700 rounded-full -translate-y-1/2"
+									initial={false}
+									animate={{
+										opacity: openDropdown === "mobileMenu" ? 0 : 1,
+										scale: openDropdown === "mobileMenu" ? 0.8 : 1,
+									}}
+									transition={{ duration: 0.2 }}
+								/>
+
+								{/* Bottom line */}
+								<motion.span
+									className="absolute left-0 w-full h-0.5 bg-gray-700 rounded-full origin-center"
+									initial={false}
+									animate={{
+										bottom: openDropdown === "mobileMenu" ? "50%" : "0%",
+										rotate: openDropdown === "mobileMenu" ? -45 : 0,
+										translateY: openDropdown === "mobileMenu" ? "50%" : "0%",
+									}}
+									transition={{
+										type: "spring",
+										stiffness: 300,
+										damping: 25,
+										duration: 0.3,
+									}}
+								/>
+							</div>
 						</div>
-					</button>
+					</motion.button>
 				</div>
 			</motion.nav>
 
-			{/* Mobile Menu */}
+			{/* Mobile Menu with enhanced animations */}
 			<MobileMenu
 				isOpen={openDropdown === "mobileMenu"}
 				onClose={closeDropdown}
 				activeSection={pathname}
 			/>
-		</header>
+		</motion.header>
 	);
 };
 
