@@ -40,13 +40,17 @@ const Navbar: React.FC = () => {
 
 	// Helper for anchor links (pathname + hash)
 	const isActiveLink = (link: string) => {
-		if (!link) return false;
-		// Support for anchor links
-		if (link.includes("#")) {
-			return pathname + window.location.hash === link;
-		}
-		return pathname === link;
-	};
+			   if (!link) return false;
+			   // Support for anchor links
+			   if (link.includes("#")) {
+					   if (typeof window !== "undefined") {
+							   return pathname + window.location.hash === link;
+					   }
+					   // On server, just compare pathname (no hash available)
+					   return pathname === link.split("#")[0];
+			   }
+			   return pathname === link;
+	   };
 
 	// Enhanced scroll behavior with smooth transitions
 	useEffect(() => {
