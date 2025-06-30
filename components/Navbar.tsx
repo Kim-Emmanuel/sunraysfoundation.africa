@@ -28,6 +28,8 @@ const Navbar: React.FC = () => {
 		showHeaderContent: true,
 	});
 	const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+	const [, setIsMobileView] = useState(false);
+	const [isScrolledToTop, setIsScrolledToTop] = useState(true);
 	const pathname = usePathname();
 
 	const handleDropdown = (dropdown: string) => {
@@ -65,6 +67,7 @@ const Navbar: React.FC = () => {
 			const scrollingDown = currentScrollY > lastScrollY;
 			const scrolledPastThreshold = currentScrollY > SCROLL_THRESHOLD;
 
+			setIsScrolledToTop(currentScrollY === 0);
 			setScrollState({
 				isVisible: !scrollingDown || !scrolledPastThreshold,
 				lastScrollY: currentScrollY,
@@ -86,7 +89,9 @@ const Navbar: React.FC = () => {
 		};
 
 		const handleResize = () => {
-			if (window.innerWidth >= 768) {
+			const width = window.innerWidth;
+			setIsMobileView(width < 768);
+			if (width >= 768) {
 				closeDropdown();
 			}
 		};
@@ -207,33 +212,41 @@ const Navbar: React.FC = () => {
 						<div className="flex flex-wrap items-center justify-between">
 							<div className="hidden md:block w-full md:w-3/4">
 								<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2">
-									<div>
-										<p className="text-gray-900 text-xs md:text-xs lg:text-sm">
-											SOUTH SDN OFFICE
-											<br />
-											+211 929 975 708
-										</p>
+									<div className="group">
+										<a href="tel:+211929975708" className="block hover:transform hover:scale-105 transition-all duration-200">
+											<p className="text-gray-900 text-xs md:text-xs lg:text-sm group-hover:text-gray-700">
+												SOUTH SDN OFFICE
+												<br />
+												<span className="group-hover:text-white">+211 929 975 708</span>
+											</p>
+										</a>
 									</div>
-									<div>
-										<p className="text-gray-900 text-xs md:text-xs lg:text-sm">
-											KENYA OFFICE
-											<br />
-											+254 702 676 918
-										</p>
+									<div className="group">
+										<a href="tel:+254702676918" className="block hover:transform hover:scale-105 transition-all duration-200">
+											<p className="text-gray-900 text-xs md:text-xs lg:text-sm group-hover:text-gray-700">
+												KENYA OFFICE
+												<br />
+												<span className="group-hover:text-white">+254 702 676 918</span>
+											</p>
+										</a>
 									</div>
-									<div>
-										<p className="text-gray-900 text-xs md:text-xs lg:text-sm">
-											UGANDA OFFICE
-											<br />
-											+256 766 959 352
-										</p>
+									<div className="group">
+										<a href="tel:+256766959352" className="block hover:transform hover:scale-105 transition-all duration-200">
+											<p className="text-gray-900 text-xs md:text-xs lg:text-sm group-hover:text-gray-700">
+												UGANDA OFFICE
+												<br />
+												<span className="group-hover:text-white">+256 766 959 352</span>
+											</p>
+										</a>
 									</div>
-									<div>
-										<p className="text-gray-900 text-xs md:text-xs lg:text-sm">
-											LESOTHO OFFICE
-											<br />
-											+266 5680 8083
-										</p>
+									<div className="group">
+										<a href="tel:+2665680808" className="block hover:transform hover:scale-105 transition-all duration-200">
+											<p className="text-gray-900 text-xs md:text-xs lg:text-sm group-hover:text-gray-700">
+												LESOTHO OFFICE
+												<br />
+												<span className="group-hover:text-white">+266 5680 8083</span>
+											</p>
+										</a>
 									</div>
 								</div>
 							</div>
@@ -242,49 +255,68 @@ const Navbar: React.FC = () => {
 									<Link
 										href="https://www.facebook.com/profile.php?id=61553897036925"
 										className="text-white"
+										aria-label="Visit our Facebook page"
+										target="_blank"
+										rel="noopener noreferrer"
 									>
-										<div className="hover:scale-110 hover:bg-[#ffffff] rounded-full p-1 transition-all duration-200">
+										<div className="hover:scale-110 hover:bg-[#ffffff] hover:shadow-md rounded-full p-1.5 transition-all duration-300 transform">
 											<Image
 												src="/facebook.svg"
 												alt="Facebook Logo"
 												width={20}
 												height={20}
+												className="hover:opacity-90"
 											/>
 										</div>
 									</Link>
 									<Link
 										href="https://www.instagram.com/sunra_ysfoundation19/"
 										className="text-white"
+										aria-label="Follow us on Instagram"
+										target="_blank"
+										rel="noopener noreferrer"
 									>
-										<div className="hover:scale-110 hover:bg-[#ffffff] rounded-full p-1 transition-all duration-200">
+										<div className="hover:scale-110 hover:bg-[#ffffff] hover:shadow-md rounded-full p-1.5 transition-all duration-300 transform">
 											<Image
 												src="/instagram.svg"
 												alt="Instagram Logo"
 												width={20}
 												height={20}
+												className="hover:opacity-90"
 											/>
 										</div>
 									</Link>
-									<Link href="#" className="text-white">
-										<div className="hover:scale-110 hover:bg-[#ffffff] rounded-full p-1 transition-all duration-200">
+									<Link 
+										href="#" 
+										className="text-white"
+										aria-label="Connect with us on LinkedIn"
+										target="_blank"
+										rel="noopener noreferrer"
+									>
+										<div className="hover:scale-110 hover:bg-[#ffffff] hover:shadow-md rounded-full p-1.5 transition-all duration-300 transform">
 											<Image
 												src="/linkedin.svg"
 												alt="LinkedIn Logo"
 												width={20}
 												height={20}
+												className="hover:opacity-90"
 											/>
 										</div>
 									</Link>
 									<Link
 										href="https://www.youtube.com/@SunRaysFoundation"
 										className="text-white"
+										aria-label="Subscribe to our YouTube channel"
+										target="_blank"
+										rel="noopener noreferrer"
 									>
-										<div className="hover:scale-110 hover:bg-[#ffffff] rounded-full p-1 transition-all duration-200">
+										<div className="hover:scale-110 hover:bg-[#ffffff] hover:shadow-md rounded-full p-1.5 transition-all duration-300 transform">
 											<Image
 												src="/youtube.svg"
 												alt="YouTube Logo"
 												width={20}
 												height={20}
+												className="hover:opacity-90"
 											/>
 										</div>
 									</Link>
@@ -297,11 +329,12 @@ const Navbar: React.FC = () => {
 
 			<motion.nav
 				className={clsx(
-					"nav-bar bg-white backdrop-blur-md bg-opacity-90",
+					"nav-bar bg-white backdrop-blur-md",
 					"transition-all duration-300 ease-in-out",
 					{
-						"shadow-lg": !scrollState.showHeaderContent,
-						"shadow-md": scrollState.showHeaderContent,
+						"shadow-lg bg-opacity-95": !scrollState.showHeaderContent,
+						"shadow-md bg-opacity-90": scrollState.showHeaderContent,
+						"bg-opacity-80": isScrolledToTop
 					}
 				)}
 			>
@@ -355,7 +388,7 @@ const Navbar: React.FC = () => {
 												>
 													<span className="relative z-10">{item.label}</span>
 													<motion.span
-														layoutId="nav-underline"
+														layoutId={`nav-underline-${item.label}`}
 														className="absolute left-0 bottom-0 w-full h-0.5 bg-primary origin-left"
 														variants={{
 															rest: { scaleX: 0 },
@@ -424,7 +457,7 @@ const Navbar: React.FC = () => {
 												{item.label}
 											</Link>
 											<motion.span
-												layoutId="nav-underline"
+												layoutId={`nav-underline-${item.label}`}
 												className="absolute left-0 bottom-0 w-full h-0.5 bg-primary origin-left"
 												variants={{
 													rest: { scaleX: 0 },
