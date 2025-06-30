@@ -29,7 +29,6 @@ const images = [
 ];
 
 const SLIDE_DURATION = 5000; // 5 seconds
-const CROSSFADE_DURATION = 1500; // 1.5 second smooth crossfade
 
 // Create motion components properly to avoid deprecation warnings
 const MotionButton = motion.create(Button);
