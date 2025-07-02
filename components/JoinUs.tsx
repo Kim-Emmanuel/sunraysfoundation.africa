@@ -36,7 +36,7 @@ const JoinUs: FC = () => {
 				</motion.div>
 
 				<motion.div
-					className="flex flex-col justify-center items-start space-y-8"
+					className="flex flex-col justify-center items-start space-y-6"
 					initial={{ opacity: 0, x: -50 }}
 					whileInView={{ opacity: 1, x: 0 }}
 					transition={{ duration: 0.5 }}
@@ -49,7 +49,6 @@ const JoinUs: FC = () => {
 					>
 						Let&apos;s join hands and work together
 					</motion.h2>
-					<p className=" text-gray-700 leading-relaxed text-start"></p>
 
 					<p className="text-[clamp(1rem,1.5vw,1.25rem)] text-gray-700 leading-relaxed font-medium max-w-[55ch]">
 						When we come together, great things happen. Let us collaborate and
