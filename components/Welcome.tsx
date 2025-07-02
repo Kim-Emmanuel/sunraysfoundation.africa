@@ -8,6 +8,19 @@ import { useRouter } from 'next/navigation'
 
 const YOUTUBE_URL = process.env.NEXT_PUBLIC_YOUTUBE_URL || '';
 
+const itemVariants = {
+	hidden: { opacity: 0, y: 80, scale: 0.95 },
+	visible: {
+		opacity: 1,
+		y: 0,
+		scale: 1,
+		transition: {
+			duration: 0.8,
+			ease: [0.25, 0.1, 0.25, 1.0],
+		},
+	},
+};
+
 const Welcome: FC = () => {
   const router = useRouter();
 
@@ -15,16 +28,20 @@ const Welcome: FC = () => {
     router.push("/about-us");
   };
 
+  // Create motion components properly to avoid deprecation warnings
+  const MotionButton = motion.create(Button);
+  
   return (
-    <section className="container mx-auto px-4 py-10 sm:px-6 lg:px-8">
-      <motion.h1
-        className="heading !text-center !mb-8"
-        initial={{ opacity: 0, y: -50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        Welcome to Sun Rays Foundation
-      </motion.h1>
+    <section className="container mx-auto px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20 max-w-7xl relative py-20 sm:py-28 md:py-36 lg:py-44 overflow-hidden">
+      
+
+      {/* Modern Section Header with Typography Revolution */}
+                <motion.div variants={itemVariants} className="relative">
+                  <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 sm:mb-8">
+                    Welcome to Sun Rays Foundation
+                  </h2>
+                </motion.div>
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
         <motion.div
           className="space-y-8"
@@ -32,21 +49,38 @@ const Welcome: FC = () => {
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="sub-heading !max-w-3xl !text-start mb-4">
-            Welcome to Sun Rays Foundation!
-          </h2>
-          <p className="text-[clamp(1rem,1.5vw,1.25rem)] text-gray-700 leading-relaxed">
+          {/* Subtitle with glassmorphism effect */}
+                  <div className="inline-block px-6 py-3 bg-white/60 backdrop-blur-md rounded-full border border-gray-200 shadow-lg">
+                    <span className="text-sm sm:text-base font-medium text-gray-700 tracking-wide uppercase">
+                      Welcome to Sun Rays Foundation!
+                    </span>
+                  </div>
+          <p className="text-[clamp(1rem,1.5vw,1.25rem)] text-gray-700 font-medium leading-relaxed">
             Founded by a group of South Sudanese youth, Sun Rays Foundation is a humanitarian non-profit organization.
             We are driven by love and purpose to help vulnerable communities through sustainable, community-based
             solutions that strengthen resilience and empower the most marginalized in East Africa.
             Join us to build a brighter tomorrow for all.
           </p>
-          <Button 
-            onClick={handleAboutUsClick} 
-            className="mt-5 py-5 px-6 flex items-center transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-          >
-            Read More
-          </Button>
+          
+
+          <MotionButton
+										onClick={handleAboutUsClick} 
+										className="px-8 py-4 sm:px-10 sm:py-5 md:px-12 md:py-6
+													text-sm sm:text-base md:text-lg lg:text-xl
+													bg-primary/90 hover:bg-primary 
+													transition-all duration-300 ease-out
+													shadow-xl hover:shadow-2xl
+													min-h-[48px] sm:min-h-[52px] md:min-h-[56px]
+													font-semibold rounded-xl hover:rounded-2xl
+													focus:outline-none focus:ring-4 focus:ring-primary/50 focus:ring-offset-2
+													active:scale-95 backdrop-blur-sm
+													border border-white/10 hover:border-primary/30"
+										whileHover={{ scale: 1.05, y: -2 }}
+										whileTap={{ scale: 0.95 }}
+										aria-label="Learn more about our mission and values"
+									>
+										Read More
+									</MotionButton>
         </motion.div>
 
         <motion.div

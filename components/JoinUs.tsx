@@ -14,10 +14,13 @@ const JoinUs: FC = () => {
 		router.push("/contact");
 	};
 
+	// Create motion components properly to avoid deprecation warnings
+	const MotionButton = motion.create(Button);
+
 	return (
-		<section className="py-10 bg-gradient-to-b from-white to-[#e5ead3]">
-			<div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center container mx-auto px-4 py-10 sm:px-6 lg:px-8">
-        <motion.div
+		<section className="relative py-20 sm:py-28 md:py-36 lg:py-44 overflow-hidden bg-gradient-to-b from-white to-[#e5ead3]">
+			<div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative container mx-auto px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20 max-w-7xl">
+				<motion.div
 					className="relative aspect-video w-full overflow-hidden shadow-lg"
 					initial={{ opacity: 0, scale: 0.8 }}
 					whileInView={{ opacity: 1, scale: 1 }}
@@ -46,17 +49,36 @@ const JoinUs: FC = () => {
 					>
 						Let&apos;s join hands and work together
 					</motion.h2>
-					<p className="text-[clamp(1rem,1.5vw,1.25rem)] text-gray-700 leading-relaxed text-start max-w-[55ch]">
+					<p className=" text-gray-700 leading-relaxed text-start"></p>
+
+					<p className="text-[clamp(1rem,1.5vw,1.25rem)] text-gray-700 leading-relaxed font-medium max-w-[55ch]">
 						When we come together, great things happen. Let us collaborate and
-						change lives. Join us in our mission to make the world a better place.
+						change lives.{" "}
+						<span className="text-primary font-semibold">
+							Join us in our mission
+						</span>{" "}
+						to make the world a better place.
 					</p>
-          <Button
-            onClick={handleJoinUsClick}
-            className="mt-5 py-5 px-6 flex items-center gap-2 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-          >
-            <HiUserGroup className="w-5 h-5" />
-            Join Us
-          </Button>
+
+					<MotionButton
+						onClick={handleJoinUsClick}
+						className="px-8 py-4 sm:px-10 sm:py-5 md:px-12 md:py-6
+													text-sm sm:text-base md:text-lg lg:text-xl
+													bg-primary/90 hover:bg-primary 
+													transition-all duration-300 ease-out
+													shadow-xl hover:shadow-2xl
+													min-h-[48px] sm:min-h-[52px] md:min-h-[56px]
+													font-semibold rounded-xl hover:rounded-2xl
+													focus:outline-none focus:ring-4 focus:ring-primary/50 focus:ring-offset-2
+													active:scale-95 backdrop-blur-sm
+													border border-white/10 hover:border-primary/30"
+						whileHover={{ scale: 1.05, y: -2 }}
+						whileTap={{ scale: 0.95 }}
+						aria-label="Learn more about our mission and values"
+					>
+						<HiUserGroup className="w-5 h-5" />
+						Join Us
+					</MotionButton>
 				</motion.div>
 			</div>
 		</section>

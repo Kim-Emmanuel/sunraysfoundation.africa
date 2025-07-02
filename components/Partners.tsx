@@ -8,14 +8,17 @@ import { IoChevronBackOutline, IoChevronForwardOutline } from "react-icons/io5";
 import { HiOutlineArrowRight } from "react-icons/hi";
 
 const partners = [
+	{ name: "undp", src: "/images/partner-logos/undp-logo-blue.svg", url: "#" },
 	{ name: "icd", src: "/images/partner-logos/icd-logo.png", url: "#" },
 	{ name: "cmmd", src: "/images/partner-logos/cmmb-logo.png", url: "#" },
 	{ name: "amref", src: "/images/partner-logos/amref-logo.png", url: "#" },
+	{ name: "gess", src: "/images/partner-logos/aamt-logo-sp-data.svg", url: "#" },
 	{
 		name: "misereor",
 		src: "/images/partner-logos/misereor-logo.png",
 		url: "#",
 	},
+	{ name: "igad-ssd", src: "/images/partner-logos/igad-ssd-logo.svg", url: "#" },
 ];
 
 const Partners: React.FC = () => {
@@ -41,7 +44,9 @@ const Partners: React.FC = () => {
 	return (
 		<section className="bg-gray-50">
 			<div className="container mx-auto px-4 py-10 sm:px-6 lg:px-8 text-center">
-				<h2 className="heading-partner">Our Partners</h2>
+				<h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 sm:mb-8">
+							Our Partners
+						</h2>
 				<div className="relative w-full max-w-6xl mx-auto">
 					{/* Navigation Arrows */}
 					<button
