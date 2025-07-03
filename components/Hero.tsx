@@ -10,21 +10,21 @@ import { useRouter } from "next/navigation";
 const images = [
 	{
 		src: "/banner.png",
-		alt: "Collaborating for a Healthy Asia",
-		title: "Compassionate with Hope",
-		subtitle: "Building healthier communities through innovation and collaborative care",
+		alt: "Empowering Communities, Transforming Lives",
+		title: "Empowering Communities, Transforming Lives",
+		subtitle: "Uplifting vulnerable groups through inclusive, community-led solutions",
 	},
 	{
 		src: "/banner2.jpg",
-		alt: "Innovating for a Better Tomorrow",
-		title: "Together We Shine Brighter",
-		subtitle: "Collaborative solutions for sustainable healthcare excellence",
+		alt: "Hope in Action for East Africa’s Most Vulnerable",
+		title: "Hope in Action for East Africa’s Most Vulnerable",
+		subtitle: "Grassroots impact across South Sudan, Uganda, and Kenya",
 	},
 	{
 		src: "/banner3.jpg",
-		alt: "Advancing Medical Excellence",
-		title: "Pioneering Healthcare",
-		subtitle: "Transforming lives through cutting-edge research and innovation",
+		alt: "Compassionate with Hope",
+		title: "Compassionate with Hope",
+		subtitle: "Standing with the marginalized to restore dignity and opportunity",
 	},
 ];
 

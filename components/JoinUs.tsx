@@ -18,7 +18,14 @@ const JoinUs: FC = () => {
 	const MotionButton = motion.create(Button);
 
 	return (
-		<section className="relative py-20 sm:py-28 md:py-36 lg:py-44 overflow-hidden bg-gradient-to-b from-white to-[#e5ead3]">
+		<section className="relative py-20 sm:py-28 md:py-36 lg:py-44 bg-gradient-to-br from-slate-50 via-white to-green-50 overflow-hidden">
+			{/* Background Pattern */}
+      <div className="absolute inset-0 opacity-30">
+        <div className="absolute top-0 left-0 w-72 h-72 bg-green-100 rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
+        <div className="absolute top-0 right-0 w-72 h-72 bg-blue-100 rounded-full mix-blend-multiply filter blur-xl animate-pulse delay-1000"></div>
+        <div className="absolute bottom-0 left-1/2 w-72 h-72 bg-yellow-100 rounded-full mix-blend-multiply filter blur-xl animate-pulse delay-2000"></div>
+      </div>
+
 			<div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative container mx-auto px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20 max-w-7xl">
 				<motion.div
 					className="relative aspect-video w-full overflow-hidden shadow-lg"

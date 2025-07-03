@@ -58,17 +58,17 @@ const workSans = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Sun Rays Foundation | Empowering Communities",
-  description: "Sun Rays Foundation aims to bring sustainable development and provide educational resources to underprivileged communities in South Sudan.",
-  keywords: "Sun Rays Foundation, nonprofit, charity, South Sudan, education, sustainable development",
+  title: "Sunrays Foundation | Empowering Vulnerable Communities in East Africa",
+  description: "Sunrays Foundation empowers vulnerable communities in South Sudan, Uganda, and Kenya through inclusive, community-driven humanitarian solutions.",
+  keywords: "Sunrays Foundation, nonprofit, charity, South Sudan, education, sustainable development",
   // Open Graph / Facebook
   openGraph: {
-    title: "Sun Rays Foundation",
-    description: "Sun Rays Foundation aims to bring sustainable development and provide educational resources to underprivileged communities in South Sudan.",
+    title: "Sunrays Foundation | Empowering Vulnerable Communities in East Africa",
+    description: "Sunrays Foundation empowers vulnerable communities in South Sudan, Uganda, and Kenya through inclusive, community-driven humanitarian solutions.",
     type: "website",
     locale: "en_US",
     url: "https://www.sunraysfoundation.org",
-    siteName: "Sun Rays Foundation",
+    siteName: "Sunrays Foundation",
     images: [
       {
         url: "https://www.sunraysfoundation.org/images/og-image.jpg",

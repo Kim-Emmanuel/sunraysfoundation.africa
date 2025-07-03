@@ -7,7 +7,7 @@ import { HiOutlineArrowRight } from "react-icons/hi";
 
 const MissionAndVision: FC = () => {
 	return (
-		<div className="relative bg-gradient-to-b from-white to-[#e5ead3] text-black py-12">
+		<div className="relative text-black py-12">
 			<motion.div
 				className="absolute inset-0 z-0"
 				initial={{ opacity: 0 }}
@@ -18,11 +18,11 @@ const MissionAndVision: FC = () => {
 			>
 
 			</motion.div>
-			<div className="relative container mx-auto text-center z-10">
-				<h2 className="text-46-normal !font-medium mb-8">
-					Our Vision & Mission
-				</h2>
-				<div className="flex flex-col md:flex-row justify-center items-stretch gap-8 max-w-6xl mx-auto px-4">
+			<div className="relative text-center z-10">
+				<h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 sm:mb-8">
+							Our Vision & Mission
+						</h2>
+				<div className="flex flex-col md:flex-row justify-center items-stretch gap-8">
 					<motion.div
 						className="flex-1 bg-white shadow-lg p-8 border-[1px] border-[#e58824]/70 hover:shadow-xl transition-shadow rounded-md md:rounded-none md:rounded-tr-[50px] md:rounded-bl-[50px]"
 						initial={{ opacity: 0, y: 50 }}
