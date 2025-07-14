@@ -31,6 +31,7 @@ const Navbar: React.FC = () => {
 	const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const [isScrolledToTop, setIsScrolledToTop] = useState(true);
+	const [isMobileView, setIsMobileView] = useState(false);
 	const pathname = usePathname();
 
 	const handleDropdown = (dropdown: string) => {
@@ -101,6 +102,9 @@ const Navbar: React.FC = () => {
 				closeDropdown();
 			}
 		};
+
+		// Initial setup
+		handleResize();
 
 		window.addEventListener("scroll", handleScroll, { passive: true });
 		window.addEventListener("resize", handleResize);
@@ -560,7 +564,4 @@ const Navbar: React.FC = () => {
 };
 
 export default Navbar;
-function setIsMobileView(_arg0: boolean) {
-	throw new Error("Function not implemented.");
-}
 
