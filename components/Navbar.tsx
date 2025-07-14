@@ -31,7 +31,7 @@ const Navbar: React.FC = () => {
 	const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const [isScrolledToTop, setIsScrolledToTop] = useState(true);
-	const [isMobileView, setIsMobileView] = useState(false);
+	const [, setIsMobileView] = useState(false);
 	const pathname = usePathname();
 
 	const handleDropdown = (dropdown: string) => {
