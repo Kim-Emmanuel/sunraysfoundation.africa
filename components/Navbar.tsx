@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import { Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import MobileMenu from "./MobileMenu";
@@ -28,31 +29,36 @@ const Navbar: React.FC = () => {
 		showHeaderContent: true,
 	});
 	const [openDropdown, setOpenDropdown] = useState<string | null>(null);
-	const [, setIsMobileView] = useState(false);
+	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const [isScrolledToTop, setIsScrolledToTop] = useState(true);
 	const pathname = usePathname();
 
 	const handleDropdown = (dropdown: string) => {
 		if (window.innerWidth < 768) {
-			setOpenDropdown(openDropdown === dropdown ? null : dropdown);
+			const newState = openDropdown === dropdown ? null : dropdown;
+			setOpenDropdown(newState);
+			setIsMenuOpen(newState === "mobileMenu");
 		}
 	};
 
-	const closeDropdown = () => setOpenDropdown(null);
+	const closeDropdown = () => {
+		setOpenDropdown(null);
+		setIsMenuOpen(false);
+	};
 
 	// Helper for anchor links (pathname + hash)
 	const isActiveLink = (link: string) => {
-			   if (!link) return false;
-			   // Support for anchor links
-			   if (link.includes("#")) {
-					   if (typeof window !== "undefined") {
-							   return pathname + window.location.hash === link;
-					   }
-					   // On server, just compare pathname (no hash available)
-					   return pathname === link.split("#")[0];
-			   }
-			   return pathname === link;
-	   };
+		if (!link) return false;
+		// Support for anchor links
+		if (link.includes("#")) {
+			if (typeof window !== "undefined") {
+				return pathname + window.location.hash === link;
+			}
+			// On server, just compare pathname (no hash available)
+			return pathname === link.split("#")[0];
+		}
+		return pathname === link;
+	};
 
 	// Enhanced scroll behavior with smooth transitions
 	useEffect(() => {
@@ -213,38 +219,58 @@ const Navbar: React.FC = () => {
 							<div className="hidden md:block w-full md:w-3/4">
 								<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2">
 									<div className="group">
-										<a href="tel:+211929975708" className="block hover:transform hover:scale-105 transition-all duration-200">
+										<a
+											href="tel:+211929975708"
+											className="block hover:transform hover:scale-105 transition-all duration-200"
+										>
 											<p className="text-gray-900 text-xs md:text-xs lg:text-sm group-hover:text-gray-700">
 												SOUTH SDN OFFICE
 												<br />
-												<span className="group-hover:text-white">+211 929 975 708</span>
+												<span className="group-hover:text-white">
+													+211 929 975 708
+												</span>
 											</p>
 										</a>
 									</div>
 									<div className="group">
-										<a href="tel:+254702676918" className="block hover:transform hover:scale-105 transition-all duration-200">
+										<a
+											href="tel:+254702676918"
+											className="block hover:transform hover:scale-105 transition-all duration-200"
+										>
 											<p className="text-gray-900 text-xs md:text-xs lg:text-sm group-hover:text-gray-700">
 												KENYA OFFICE
 												<br />
-												<span className="group-hover:text-white">+254 702 676 918</span>
+												<span className="group-hover:text-white">
+													+254 702 676 918
+												</span>
 											</p>
 										</a>
 									</div>
 									<div className="group">
-										<a href="tel:+256766959352" className="block hover:transform hover:scale-105 transition-all duration-200">
+										<a
+											href="tel:+256766959352"
+											className="block hover:transform hover:scale-105 transition-all duration-200"
+										>
 											<p className="text-gray-900 text-xs md:text-xs lg:text-sm group-hover:text-gray-700">
 												UGANDA OFFICE
 												<br />
-												<span className="group-hover:text-white">+256 766 959 352</span>
+												<span className="group-hover:text-white">
+													+256 766 959 352
+												</span>
 											</p>
 										</a>
 									</div>
 									<div className="group">
-										<a href="tel:+2665680808" className="block hover:transform hover:scale-105 transition-all duration-200">
+										<a
+											href="tel:+2665680808"
+											className="block hover:transform hover:scale-105 transition-all duration-200"
+										>
 											<p className="text-gray-900 text-xs md:text-xs lg:text-sm group-hover:text-gray-700">
 												LESOTHO OFFICE
 												<br />
-												<span className="group-hover:text-white">+266 5680 8083</span>
+												<span className="group-hover:text-white">
+													+266 5680 8083
+												</span>
 											</p>
 										</a>
 									</div>
@@ -286,8 +312,8 @@ const Navbar: React.FC = () => {
 											/>
 										</div>
 									</Link>
-									<Link 
-										href="#" 
+									<Link
+										href="#"
 										className="text-white"
 										aria-label="Connect with us on LinkedIn"
 										target="_blank"
@@ -329,208 +355,197 @@ const Navbar: React.FC = () => {
 
 			<motion.nav
 				className={clsx(
-					"nav-bar bg-white backdrop-blur-md",
+					"nav-bar bg-white backdrop-blur-md h-16 min-[1020px]:h-20",
 					"transition-all duration-300 ease-in-out",
 					{
 						"shadow-lg bg-opacity-95": !scrollState.showHeaderContent,
 						"shadow-md bg-opacity-90": scrollState.showHeaderContent,
-						"bg-opacity-80": isScrolledToTop
+						"bg-opacity-80": isScrolledToTop,
 					}
 				)}
 			>
-				<div className="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
-					{/* Logo */}
-					<Link href="/" className="py-2">
-						<Image
-							src="/logo.svg"
-							alt="Sunrays Foundation Logo"
-							width={80}
-							height={80}
-							className="object-cover w-[80px] sm:w-[90px] md:w-[100px]"
-							priority
-						/>
-					</Link>
+				<div className="container mx-auto px-4 sm:px-6 lg:px-8">
+					<div className="flex items-center justify-between h-16 min-[1020px]:h-20">
+						{/* Logo */}
+						<Link
+							href="/"
+							className="flex items-center space-x-2"
+							aria-label="Home"
+						>
+							<motion.div
+								whileHover={{ scale: 1.05 }}
+								transition={{ type: "spring", stiffness: 300 }}
+								className="relative w-[100px] h-[60px] md:w-[110px] md:h-[70px] lg:w-[130px] lg:h-[80px]"
+							>
+								<Image
+									src="/logo.svg"
+									alt="Sunrays Foundation Logo"
+									width={130}
+									height={80}
+									priority
+									className="object-contain"
+								/>
+							</motion.div>
+						</Link>
 
-					{/* Desktop Menu - hidden on mobile */}
-					<nav
-						className="hidden md:flex items-center space-x-2 lg:space-x-6"
-						aria-label="Main navigation"
-					>
-						<ul className="flex flex-col md:flex-row md:space-x-4 mt-4 md:mt-0">
-							{desktopNav.map((item) => (
-								<li
-									key={item.label}
-									className="relative group focus-within:z-50"
-								>
-									{item.dropdown ? (
-										<DropdownMenu>
-											<DropdownMenuTrigger asChild>
-												<motion.button
-													whileHover="hover"
-													whileFocus="hover"
-													initial="rest"
-													animate={
-														item.active?.some((l) => isActiveLink(l))
-															? "active"
-															: "rest"
-													}
-													variants={{
-														rest: { color: "#374151" }, // text-gray-700
-														hover: { color: "#eab308" }, // text-primary
-														active: { color: "#eab308" },
-													}}
-													className={clsx(
-														"custom-link relative inline-block px-4 py-2 font-medium focus:outline-none"
-													)}
-													aria-haspopup="menu"
-													aria-expanded="false"
+						{/* Desktop Menu - hidden on mobile */}
+						<nav
+							className="hidden md:flex items-center space-x-2 lg:space-x-6"
+							aria-label="Main navigation"
+						>
+							<ul className="flex flex-col md:flex-row md:space-x-4 mt-4 md:mt-0">
+								{desktopNav.map((item) => (
+									<li
+										key={item.label}
+										className="relative group focus-within:z-50"
+									>
+										{item.dropdown ? (
+											<DropdownMenu>
+												<DropdownMenuTrigger asChild>
+													<motion.button
+														whileHover="hover"
+														whileFocus="hover"
+														initial="rest"
+														animate={
+															item.active?.some((l) => isActiveLink(l))
+																? "active"
+																: "rest"
+														}
+														variants={{
+															rest: { color: "#374151" }, // text-gray-700
+															hover: { color: "#eab308" }, // text-primary
+															active: { color: "#eab308" },
+														}}
+														className={clsx(
+															"custom-link relative inline-block px-4 py-2 font-medium focus:outline-none"
+														)}
+														aria-haspopup="menu"
+														aria-expanded="false"
+														tabIndex={0}
+													>
+														<span className="relative z-10">{item.label}</span>
+														<motion.span
+															layoutId={`nav-underline-${item.label}`}
+															className="absolute left-0 bottom-0 w-full h-0.5 bg-primary origin-left"
+															variants={{
+																rest: { scaleX: 0 },
+																hover: {
+																	scaleX: 1,
+																	transition: { duration: 0.3 },
+																},
+																active: {
+																	scaleX: 1,
+																	transition: { duration: 0.3 },
+																},
+															}}
+															style={{ transformOrigin: "left" }}
+														/>
+													</motion.button>
+												</DropdownMenuTrigger>
+												<DropdownMenuContent className="animate-in fade-in-80 slide-in-from-top-1 z-50 min-w-[14rem] overflow-hidden rounded-md border border-gray-100 bg-white/95 backdrop-blur-md p-1 text-gray-700 shadow-2xl">
+													{item.dropdown.map((drop, idx) => (
+														<React.Fragment key={drop.href}>
+															<DropdownMenuItem
+																asChild
+																className="relative flex cursor-pointer select-none items-center rounded-sm px-3 py-2 text-sm outline-none transition-colors hover:bg-primary hover:text-white focus:bg-primary focus:text-white"
+															>
+																<Link
+																	href={drop.href}
+																	className={clsx({
+																		"text-primary font-semibold": isActiveLink(
+																			drop.href
+																		),
+																	})}
+																	onClick={closeDropdown}
+																	tabIndex={0}
+																>
+																	{drop.label}
+																</Link>
+															</DropdownMenuItem>
+															{idx !== item.dropdown.length - 1 && (
+																<DropdownMenuSeparator className="my-1 h-px bg-gray-100" />
+															)}
+														</React.Fragment>
+													))}
+												</DropdownMenuContent>
+											</DropdownMenu>
+										) : (
+											<motion.div
+												whileHover="hover"
+												whileFocus="hover"
+												initial="rest"
+												animate={
+													item.active?.some((l) => isActiveLink(l))
+														? "active"
+														: "rest"
+												}
+												variants={{
+													rest: { color: "#374151" },
+													hover: { color: "#eab308" },
+													active: { color: "#eab308" },
+												}}
+												className="inline-block px-4 py-2 font-medium relative"
+											>
+												<Link
+													href={item.href}
+													className="relative z-10 focus:outline-none"
 													tabIndex={0}
 												>
-													<span className="relative z-10">{item.label}</span>
-													<motion.span
-														layoutId={`nav-underline-${item.label}`}
-														className="absolute left-0 bottom-0 w-full h-0.5 bg-primary origin-left"
-														variants={{
-															rest: { scaleX: 0 },
-															hover: {
-																scaleX: 1,
-																transition: { duration: 0.3 },
-															},
-															active: {
-																scaleX: 1,
-																transition: { duration: 0.3 },
-															},
-														}}
-														style={{ transformOrigin: "left" }}
-													/>
-												</motion.button>
-											</DropdownMenuTrigger>
-											<DropdownMenuContent className="animate-in fade-in-80 slide-in-from-top-1 z-50 min-w-[14rem] overflow-hidden rounded-md border border-gray-100 bg-white/95 backdrop-blur-md p-1 text-gray-700 shadow-2xl">
-												{item.dropdown.map((drop, idx) => (
-													<React.Fragment key={drop.href}>
-														<DropdownMenuItem
-															asChild
-															className="relative flex cursor-pointer select-none items-center rounded-sm px-3 py-2 text-sm outline-none transition-colors hover:bg-primary hover:text-white focus:bg-primary focus:text-white"
-														>
-															<Link
-																href={drop.href}
-																className={clsx({
-																	"text-primary font-semibold": isActiveLink(
-																		drop.href
-																	),
-																})}
-																onClick={closeDropdown}
-																tabIndex={0}
-															>
-																{drop.label}
-															</Link>
-														</DropdownMenuItem>
-														{idx !== item.dropdown.length - 1 && (
-															<DropdownMenuSeparator className="my-1 h-px bg-gray-100" />
-														)}
-													</React.Fragment>
-												))}
-											</DropdownMenuContent>
-										</DropdownMenu>
+													{item.label}
+												</Link>
+												<motion.span
+													layoutId={`nav-underline-${item.label}`}
+													className="absolute left-0 bottom-0 w-full h-0.5 bg-primary origin-left"
+													variants={{
+														rest: { scaleX: 0 },
+														hover: { scaleX: 1, transition: { duration: 0.3 } },
+														active: {
+															scaleX: 1,
+															transition: { duration: 0.3 },
+														},
+													}}
+													style={{ transformOrigin: "left" }}
+												/>
+											</motion.div>
+										)}
+									</li>
+								))}
+							</ul>
+						</nav>
+
+						{/* Mobile Menu Button */}
+						<div className="md:hidden ml-auto">
+							<motion.button
+								className="flex items-center justify-center p-2 rounded-md hover:bg-primary/10 transition-colors"
+								onClick={() => {
+									setIsMenuOpen(!isMenuOpen);
+									handleDropdown("mobileMenu");
+								}}
+								aria-label="Toggle navigation menu"
+								aria-expanded={isMenuOpen}
+								whileTap={{ scale: 0.95 }}
+								whileHover={{ scale: 1.05 }}
+							>
+								<motion.div
+									animate={{
+										rotate: isMenuOpen ? 180 : 0,
+										scale: isMenuOpen ? 0.8 : 1,
+									}}
+									transition={{
+										duration: 0.3,
+										type: "spring",
+										stiffness: 200,
+									}}
+								>
+									{isMenuOpen ? (
+										<X className="w-6 h-6 text-primary" />
 									) : (
-										<motion.div
-											whileHover="hover"
-											whileFocus="hover"
-											initial="rest"
-											animate={
-												item.active?.some((l) => isActiveLink(l))
-													? "active"
-													: "rest"
-											}
-											variants={{
-												rest: { color: "#374151" },
-												hover: { color: "#eab308" },
-												active: { color: "#eab308" },
-											}}
-											className="inline-block px-4 py-2 font-medium relative"
-										>
-											<Link
-												href={item.href}
-												className="relative z-10 focus:outline-none"
-												tabIndex={0}
-											>
-												{item.label}
-											</Link>
-											<motion.span
-												layoutId={`nav-underline-${item.label}`}
-												className="absolute left-0 bottom-0 w-full h-0.5 bg-primary origin-left"
-												variants={{
-													rest: { scaleX: 0 },
-													hover: { scaleX: 1, transition: { duration: 0.3 } },
-													active: { scaleX: 1, transition: { duration: 0.3 } },
-												}}
-												style={{ transformOrigin: "left" }}
-											/>
-										</motion.div>
+										<Menu className="w-6 h-6 text-gray-700" />
 									)}
-								</li>
-							))}
-						</ul>
-					</nav>
-
-					{/* Mobile Menu Button */}
-					<motion.button
-						className="md:hidden flex justify-end "
-						onClick={() => handleDropdown("mobileMenu")}
-						aria-label="Toggle navigation menu"
-						aria-expanded={openDropdown === "mobileMenu"}
-						whileTap={{ scale: 0.96 }}
-						whileHover={{ scale: 1.02 }}
-					>
-						<div className="relative w-12 h-12 p-3 rounded-xl bg-white/80 backdrop-blur-sm border border-gray-200/50 shadow-lg hover:shadow-xl hover:bg-white/90 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 focus:ring-offset-2">
-							<div className="relative w-6 h-5">
-								{/* Top line */}
-								<motion.span
-									className="absolute left-0 w-full h-0.5 bg-gray-700 rounded-full origin-center"
-									initial={false}
-									animate={{
-										top: openDropdown === "mobileMenu" ? "50%" : "0%",
-										rotate: openDropdown === "mobileMenu" ? 45 : 0,
-										translateY: openDropdown === "mobileMenu" ? "-50%" : "0%",
-									}}
-									transition={{
-										type: "spring",
-										stiffness: 300,
-										damping: 25,
-										duration: 0.3,
-									}}
-								/>
-
-								{/* Middle line */}
-								<motion.span
-									className="absolute left-0 top-1/2 w-full h-0.5 bg-gray-700 rounded-full -translate-y-1/2"
-									initial={false}
-									animate={{
-										opacity: openDropdown === "mobileMenu" ? 0 : 1,
-										scale: openDropdown === "mobileMenu" ? 0.8 : 1,
-									}}
-									transition={{ duration: 0.2 }}
-								/>
-
-								{/* Bottom line */}
-								<motion.span
-									className="absolute left-0 w-full h-0.5 bg-gray-700 rounded-full origin-center"
-									initial={false}
-									animate={{
-										bottom: openDropdown === "mobileMenu" ? "50%" : "0%",
-										rotate: openDropdown === "mobileMenu" ? -45 : 0,
-										translateY: openDropdown === "mobileMenu" ? "50%" : "0%",
-									}}
-									transition={{
-										type: "spring",
-										stiffness: 300,
-										damping: 25,
-										duration: 0.3,
-									}}
-								/>
-							</div>
+								</motion.div>
+							</motion.button>
 						</div>
-					</motion.button>
+					</div>
 				</div>
 			</motion.nav>
 
@@ -545,3 +560,7 @@ const Navbar: React.FC = () => {
 };
 
 export default Navbar;
+function setIsMobileView(_arg0: boolean) {
+	throw new Error("Function not implemented.");
+}
+

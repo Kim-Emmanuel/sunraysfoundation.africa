@@ -5,8 +5,7 @@ import { usePathname } from "next/navigation";
 import clsx from "clsx";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Search } from "lucide-react";
-import { Input } from "./ui/input";
+import Image from "next/image";
 
 interface MobileMenuProps {
 	isOpen: boolean;
@@ -35,23 +34,41 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
 
 	return (
 		<motion.div
-			className="fixed inset-0 bg-white z-50"
-			initial={{ x: "100%" }}
-			animate={{ x: isOpen ? 0 : "100%" }}
-			transition={{ type: "spring", damping: 30 }}
+			className="fixed inset-0 bg-white/95 backdrop-blur-sm z-50"
+			initial={{ x: "100%", opacity: 0 }}
+			animate={{ 
+				x: isOpen ? 0 : "100%",
+				opacity: isOpen ? 1 : 0
+			}}
+			transition={{ 
+				type: "spring",
+				damping: 25,
+				stiffness: 200,
+				opacity: { duration: 0.2 }
+			}}
 		>
 			<div className="h-full flex flex-col">
-				{/* Search Bar */}
-				<div className="sticky top-0 p-4 bg-white shadow-sm">
-					<div className="relative">
-						<Input
-							type="search"
-							placeholder="Search..."
-							className="w-full pl-10 pr-4 py-2 rounded-full border-2"
-						/>
-						<Search className="absolute left-3 top-2.5 h-5 w-5 text-gray-400" />
-					</div>
-				</div>
+			   {/* Main Logo */}
+			   <div className="sticky top-0 p-4 bg-white shadow-sm">
+				   
+
+					 <Link href="/" className="flex items-center space-x-2" aria-label="Home">
+		<motion.div
+			whileHover={{ scale: 1.05 }}
+			transition={{ type: "spring", stiffness: 300 }}
+			className="relative w-[100px] h-[60px] md:w-[110px] md:h-[70px] lg:w-[130px] lg:h-[80px]"
+		>
+			<Image
+				src="/logo.svg"
+				alt="Sunrays Foundation Logo"
+				width={130}
+				height={80}
+				priority
+				className="object-contain"
+			/>
+		</motion.div>
+	</Link>
+			   </div>
 
 				{/* Menu Categories */}
 				<div className="flex-1 overflow-y-auto pb-24">
@@ -474,8 +491,8 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
 					<Link href="/donate">
 						<button
 							className="w-full bg-primary text-white py-4 rounded-md font-bold 
-              shadow-lg hover:bg-primary/90 focus:ring-2 focus:ring-offset-2 focus:ring-primary
-              transition-colors"
+			  shadow-lg hover:bg-primary/90 focus:ring-2 focus:ring-offset-2 focus:ring-primary
+			  transition-colors"
 						>
 							Donate Now
 						</button>
@@ -487,8 +504,8 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
 			<button
 				onClick={onClose}
 				className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center
-          rounded-full bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2
-          focus:ring-offset-2 focus:ring-gray-500"
+		  rounded-full bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2
+		  focus:ring-offset-2 focus:ring-gray-500"
 			>
 				<span className="sr-only">Close menu</span>
 				<svg
